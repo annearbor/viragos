@@ -1,7 +1,6 @@
 require("dotenv").config();
 
 const bodyParser = require("body-parser");
-const cookieParser = require("cookie-parser");
 const express = require("express");
 const favicon = require("serve-favicon");
 const hbs = require("hbs");
@@ -9,6 +8,9 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 const passport = require("passport");
+const session = require("express-session");
+
+const MongoStore = require("connect-mongo")(session);
 
 mongoose
   .connect(
@@ -35,7 +37,17 @@ const app = express();
 app.use(logger("dev"));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
+
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: true,
+    saveUninitialized: true,
+    store: new MongoStore({ mongooseConnection: mongoose.connection })
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.get("/auth/linkedin", passport.authenticate("linkedin"));
 
@@ -43,6 +55,7 @@ app.get(
   "/auth/linkedin/callback",
   passport.authenticate("linkedin", { failureRedirect: "/login" }),
   function(req, res) {
+    console.log("success");
     // Successful authentication, redirect home.
     res.redirect("/");
   }

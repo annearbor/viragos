@@ -1,6 +1,8 @@
+console.log("I am loaded, auth");
+
 //holds all the routes that have to do with authentication
 require("dotenv").config();
-//adding passport and github strategy from passport
+//adding passport and linkedin strategy from passport
 const passport = require("passport");
 const LinkedInStrategy = require("passport-linkedin").Strategy;
 const express = require("express");
@@ -23,6 +25,8 @@ passport.deserializeUser(function(user, callback) {
 router.get("/1", (req, res) => {
   res.render("auth/login");
 });
+
+console.log(LINKEDIN_API_KEY, LINKEDIN_SECRET_KEY);
 passport.use(
   new LinkedInStrategy(
     {
@@ -35,9 +39,12 @@ passport.use(
       User.findOne({ linkedinId: profile.id }).then(user => {
         console.log("user", user);
         if (user === null) {
-          User.create();
+          User.create({ linkedinId: profile.id }).then(user => {
+            return done(null, user);
+          });
+        } else {
+          return done(null, user);
         }
-        return done(err, user);
       });
     }
   )
