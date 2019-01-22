@@ -5,4 +5,244 @@ body {
 a {
   color: #00B7FF; }
 
+body {
+  font-family: 'Lato', sans-serif; }
+
+/* Style the navbar */
+#navbar {
+  overflow: hidden;
+  background-color: white; }
+
+/* Navbar links */
+#navbar a {
+  float: right;
+  display: block;
+  color: #8c8c8c;
+  text-align: center;
+  padding: 18px;
+  text-decoration: none; }
+
+nav {
+  position: sticky;
+  top: 0; }
+
+.content {
+  padding: 16px; }
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%; }
+
+.sticky + .content {
+  padding-top: 60px; }
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #bfbfbf;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none; }
+
+.dropdown {
+  position: relative;
+  display: inline-block; }
+
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Lato', sans-serif;
+  color: white;
+  font-size: 40px;
+  font-weight: bold; }
+
+.img-overlay {
+  position: absolute;
+  top: 45%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center; }
+
+.btn-success {
+  color: #fff;
+  background-color: #bfbfbf;
+  border-color: #bfbfbf;
+  font-family: 'Lato', sans-serif; }
+
+footer {
+  font-family: 'Lato', sans-serif;
+  color: grey;
+  list-style-type: none; }
+
+.womanComp {
+  background-image: url("./images/homepage.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 130vh; }
+
+body {
+  font-family: 'Lato', sans-serif; }
+
+/* Style the navbar */
+#navbar {
+  overflow: hidden;
+  background-color: white; }
+
+/* Navbar links */
+#navbar a {
+  float: right;
+  display: block;
+  color: #8c8c8c;
+  text-align: center;
+  padding: 18px;
+  text-decoration: none; }
+
+nav {
+  position: sticky;
+  top: 0; }
+
+.content {
+  padding: 16px; }
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%; }
+
+.sticky + .content {
+  padding-top: 60px; }
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #bfbfbf;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none; }
+
+.dropdown {
+  position: relative;
+  display: inline-block; }
+
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Lato', sans-serif;
+  color: white;
+  font-size: 40px;
+  font-weight: bold; }
+
+.img-overlay {
+  position: absolute;
+  top: 45%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center; }
+
+.btn-success {
+  color: #fff;
+  background-color: #bfbfbf;
+  border-color: #bfbfbf;
+  font-family: 'Lato', sans-serif; }
+
+footer {
+  font-family: 'Lato', sans-serif;
+  color: grey;
+  list-style-type: none; }
+
+.womanComp {
+  background-image: url("./images/homepage.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 130vh; }
+
+body {
+  font-family: 'Lato', sans-serif; }
+
+/* Style the navbar */
+#navbar {
+  overflow: hidden;
+  background-color: white; }
+
+/* Navbar links */
+#navbar a {
+  float: right;
+  display: block;
+  color: #8c8c8c;
+  text-align: center;
+  padding: 18px;
+  text-decoration: none; }
+
+nav {
+  position: sticky;
+  top: 0; }
+
+.content {
+  padding: 16px; }
+
+/* The sticky class is added to the navbar with JS when it reaches its scroll position */
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%; }
+
+.sticky + .content {
+  padding-top: 60px; }
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #bfbfbf;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none; }
+
+.dropdown {
+  position: relative;
+  display: inline-block; }
+
+.centered {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: 'Lato', sans-serif;
+  color: white;
+  font-size: 40px;
+  font-weight: bold; }
+
+.img-overlay {
+  position: absolute;
+  top: 45%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center; }
+
+.btn-success {
+  color: #fff !important;
+  background-color: #bfbfbf;
+  border-color: #bfbfbf;
+  font-family: 'Lato', sans-serif; }
+
+footer {
+  font-family: 'Lato', sans-serif;
+  color: grey;
+  list-style-type: none; }
+
+.womanComp {
+  background-image: url("../images/homepage.jpg");
+  background-size: cover;
+  width: 100%;
+  height: 130vh; }
+
 /*# sourceMappingURL=style.css.map */
