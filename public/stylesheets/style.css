@@ -17,7 +17,7 @@ body {
 #navbar a {
   float: right;
   display: block;
-  color: #8c8c8c;
+  color: #808080;
   text-align: center;
   padding: 18px;
   text-decoration: none; }
@@ -76,7 +76,7 @@ nav {
 
 footer {
   font-family: 'Lato', sans-serif;
-  color: grey;
+  color: #808080;
   list-style-type: none; }
 
 .womanComp {
