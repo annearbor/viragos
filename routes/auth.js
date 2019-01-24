@@ -13,6 +13,8 @@ const User = require("../models/user");
 const LINKEDIN_API_KEY = process.env.LINKEDIN_API_KEY;
 const LINKEDIN_SECRET_KEY = process.env.LINKEDIN_SECRET_KEY;
 
+const ensureLogin = require("connect-ensure-login");
+
 // from strategy serializuser receives a full user object
 //using the session cookie and stores user inside for us
 //the paramters could be named anything
@@ -22,7 +24,7 @@ passport.serializeUser(function(user, callback) {
 passport.deserializeUser(function(user, callback) {
   callback(null, user);
 });
-router.get("/1", (req, res) => {
+router.get("/auth/login", (req, res) => {
   res.render("auth/login");
 });
 
@@ -49,5 +51,11 @@ passport.use(
     }
   )
 );
+
+// function ensureAuthenicated >> ensureLoggedin
+
+// router.get("/signup", ensureLogin.ensureLoggedIn(), (req, res, next) => {
+//   res.render("private/signup");
+// });
 
 module.exports = router;
