@@ -37,7 +37,7 @@ passport.use(
       callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback"
     },
     (token, tokenSecret, profile, done) => {
-      console.log("inside function");
+      console.log("inside function", token, tokenSecret);
       User.findOne({ linkedinId: profile.id }).then(user => {
         console.log("user", user);
         if (user === null) {
@@ -55,7 +55,11 @@ passport.use(
 // function ensureAuthenicated >> ensureLoggedin
 
 // router.get("/signup", ensureLogin.ensureLoggedIn(), (req, res, next) => {
-//   res.render("private/signup");
+//   res.render("priv");
+// });
+
+// router.get("/profile", (req, res, next) => {
+//   res.render("profilepro");
 // });
 
 module.exports = router;

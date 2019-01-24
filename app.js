@@ -57,7 +57,7 @@ app.get(
   function(req, res) {
     console.log("success");
     // Successful authentication, redirect home.
-    res.redirect("/");
+    res.redirect("/user/profile");
   }
 );
 
@@ -75,5 +75,7 @@ const index = require("./routes/index");
 app.use("/", index);
 const auth = require("./routes/auth");
 app.use("/", auth);
+const user = require("./routes/user");
+app.use("/user", user);
 
 module.exports = app;

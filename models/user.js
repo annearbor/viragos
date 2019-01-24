@@ -3,16 +3,17 @@ const mongoose = require("mongoose");
 const UserSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
-  email: String
+  //email: String,
+  linkedinId: String,
   // currentPosition: String,
   // currentCompany: String,
-  //role
+  role: { type: String, enum: ["Mentor", "Mentee"] },
   //   university: String,
   //   gradYear: Number,
   //   phone: Number,
   //   languages: [String],
   //   picture: String,
-  //   summary: String,
+  summary: String
   // interests: [String],
 });
 
