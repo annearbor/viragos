@@ -1,34 +1,62 @@
-<!doctype html>
-<html lang="en">
+<div class="form-popup" id="myForm">
 
-<head>
-  <meta charset="UTF-8" />
-  <title>Viragos </title>
-  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-    crossorigin="anonymous">
-  <link rel="stylesheet" href="./style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-  <script type="text/javascript" src="./script.js"></script>
-</head>
 
-<body>
-  <div class="form-popup" id="myForm">
-    <h2>Sign up</h2>
 
-    <button type="button" class"@image-button linkedin-button btn btn-primary">
-      <img src="linkedin.png" alt="linkedin-logo">
-      <a href="/auth/linkedin">Sign up wi th LinkedIn</a>
-    </button>
 
-    <div class="col-md-3 col-xs-12">
-      <h4>Email</h4>
-      <input name="first_name" placeholder="Email" type="text" class="form-control" value="">
-      <h4>Password</h4>
-      <input name="first_name" placeholder="Password" type="text" class="form-control" value="">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4 offset-md-4">
+
+        <h2>Sign up</h2>
+
+        <form action="/auth/login" method="POST" id="form-container">
+
+          <div class="form-group">
+            <label for="first_name">First name</label>
+            <input type="text" class="form-control" id="firstName" name="firstName" placeholder="Enter first name">
+          </div>
+
+          <div class="form-group">
+            <label for="last_name">Last name</label>
+            <input type="text" class="form-control" id="lasttName" name="lastName" placeholder="Enter last name">
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+          </div>
+
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+          </div>
+
+          <br>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+          <br><br>
+          <p class="account-message">
+            Don't have an account yet?
+            <a href="/auth/signup">Signup</a>
+          </p>
+        </form>
+
+
+
+        {{!--
+        <h4>First name</h4>
+        <input name="first_name" placeholder="First name" type="text" class="form-control" value="">
+        <h4>Last name</h4>
+        <input name="last_name" placeholder="Last name" type="text" class="form-control" value="">
+        <h4>Email</h4>
+        <input name="email" placeholder="Email" type="text" class="form-control" value="">
+        <h4>Password</h4>
+        <input name="password" placeholder="Password" type=" text" class="form-control" value="">
+        <button type="button-submit" class="button-submit" <a href="./auth/profilepro.hbs">Sign up</button> --}}
+
+
+        <button type="button-linkedin" class="logo-button">
+          <a href="/auth/linkedin">Sign up with LinkedIn</a>
+        </button>
+      </div>
     </div>
-
   </div>
-
-
-</body>
