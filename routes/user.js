@@ -2,12 +2,17 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user.js");
 
-router.get("/profile", (req, res, next) => {
-  res.render("profilepro", { user: req.user }); // shows current user information, can then be edited
+router.get("/profile/edit", (req, res, next) => {
+  res.render("user/edit", { user: req.user }); // shows current user information, can then be edited
   console.log(req.user);
 });
 
-router.post("/profile", (req, res, next) => {
+router.get("/profile/", (req, res, next) => {
+  res.render("user/show", { user: req.user }); // shows current user information, can then be edited
+  console.log(req.user);
+});
+
+router.post("/profile/edit", (req, res, next) => {
   const { firstName, lastName, role, summary } = req.body;
   console.log(req.body);
   console.log("THIS IS THE REQ USER", req.user);
