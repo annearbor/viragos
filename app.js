@@ -57,10 +57,10 @@ const LINKEDIN_SECRET_KEY = process.env.LINKEDIN_SECRET_KEY;
 // from strategy serializuser receives a full user object
 //using the session cookie and stores user inside for us
 //the paramters could be named anything
-passport.serializeUser(function (user, callback) {
+passport.serializeUser(function(user, callback) {
   callback(null, user);
 });
-passport.deserializeUser(function (user, callback) {
+passport.deserializeUser(function(user, callback) {
   callback(null, user);
 });
 
@@ -71,10 +71,11 @@ passport.use(
       clientID: LINKEDIN_API_KEY,
       clientSecret: LINKEDIN_SECRET_KEY,
       callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
-      state: true
+      state: true,
+      scope: ["r_emailaddress", "r_basicprofile"]
     },
     (token, tokenSecret, profile, done) => {
-      process.nextTick(function () {
+      process.nextTick(function() {
         console.log("inside function", token, tokenSecret);
         User.findOne({ linkedinId: profile.id }).then(user => {
           console.log("user", user);
@@ -93,8 +94,6 @@ passport.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-
-
 
 // Express View engine setup
 

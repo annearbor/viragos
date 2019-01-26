@@ -23,9 +23,10 @@ router.get("/auth/linkedin", passport.authenticate("linkedin"));
 router.get(
   "/auth/linkedin/callback",
   passport.authenticate("linkedin", { failureRedirect: "/login" }),
-  function (req, res) {
+  function(req, res) {
     console.log("success");
-    // Successful authentication, redirect home.
+    // Successful authentication, redirect to profile.
+
     res.redirect("/user/profile");
   }
 );
