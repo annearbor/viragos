@@ -3,21 +3,21 @@ const router = express.Router();
 const User = require("../models/user.js");
 
 router.get("/profile", (req, res, next) => {
-  res.render("profilepro");
+  res.render("profilepro", { user: req.user }); // shows current user information, can then be edited
 });
 
 router.post("/profile", (req, res, next) => {
   const { firstName, lastName, role, summary } = req.body;
   console.log(firstName);
 
-  const newUser = new User({ firstName, lastName, role, summary });
+  req.user.firstName = firstName
+  req.user.lastName
+  req.user.role = role
+  req.user.summary = summary
+  req.user.save().then((user) => {
+    res.send('done') // what to do ?
+  })
 
-  newUser
-    .save()
-    .then(user => {})
-    .catch(error => {
-      res.render("error");
-    });
 });
 
 module.exports = router;

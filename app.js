@@ -12,6 +12,10 @@ const session = require("express-session");
 
 const MongoStore = require("connect-mongo")(session);
 
+const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
+
+const User = require("./models/user");
+
 mongoose
   .connect(
     "mongodb://localhost/project2-viragos",
@@ -46,20 +50,51 @@ app.use(
     store: new MongoStore({ mongooseConnection: mongoose.connection })
   })
 );
+
+const LINKEDIN_API_KEY = process.env.LINKEDIN_API_KEY;
+const LINKEDIN_SECRET_KEY = process.env.LINKEDIN_SECRET_KEY;
+
+// from strategy serializuser receives a full user object
+//using the session cookie and stores user inside for us
+//the paramters could be named anything
+passport.serializeUser(function (user, callback) {
+  callback(null, user);
+});
+passport.deserializeUser(function (user, callback) {
+  callback(null, user);
+});
+
+console.log(LINKEDIN_API_KEY, LINKEDIN_SECRET_KEY);
+passport.use(
+  new LinkedInStrategy(
+    {
+      clientID: LINKEDIN_API_KEY,
+      clientSecret: LINKEDIN_SECRET_KEY,
+      callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
+      state: true
+    },
+    (token, tokenSecret, profile, done) => {
+      process.nextTick(function () {
+        console.log("inside function", token, tokenSecret);
+        User.findOne({ linkedinId: profile.id }).then(user => {
+          console.log("user", user);
+          if (user === null) {
+            User.create({ linkedinId: profile.id }).then(user => {
+              return done(null, user);
+            });
+          } else {
+            return done(null, user);
+          }
+        });
+      });
+    }
+  )
+);
+
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/auth/linkedin", passport.authenticate("linkedin"));
 
-app.get(
-  "/auth/linkedin/callback",
-  passport.authenticate("linkedin", { failureRedirect: "/login" }),
-  function(req, res) {
-    console.log("success");
-    // Successful authentication, redirect home.
-    res.redirect("/user/profile");
-  }
-);
 
 // Express View engine setup
 
