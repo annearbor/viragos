@@ -15,6 +15,7 @@ const MongoStore = require("connect-mongo")(session);
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
 
 const User = require("./models/user");
+const axios = require("axios");
 
 mongoose
   .connect(
@@ -64,7 +65,6 @@ passport.deserializeUser(function(user, callback) {
   callback(null, user);
 });
 
-console.log(LINKEDIN_API_KEY, LINKEDIN_SECRET_KEY);
 passport.use(
   new LinkedInStrategy(
     {
@@ -77,10 +77,16 @@ passport.use(
     (token, tokenSecret, profile, done) => {
       process.nextTick(function() {
         console.log("inside function", token, tokenSecret);
+
         User.findOne({ linkedinId: profile.id }).then(user => {
           console.log("user", user);
+
           if (user === null) {
-            User.create({ linkedinId: profile.id }).then(user => {
+            // make the axios request here
+
+            User.create({
+              linkedinId: profile.id
+            }).then(user => {
               return done(null, user);
             });
           } else {
