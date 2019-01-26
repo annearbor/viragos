@@ -24,8 +24,11 @@ passport.serializeUser(function(user, callback) {
 passport.deserializeUser(function(user, callback) {
   callback(null, user);
 });
-router.get("/auth/login", (req, res) => {
+router.get("/login", (req, res) => {
   res.render("auth/login");
+});
+router.get("/signup", (req, res) => {
+  res.render("auth/signup");
 });
 
 console.log(LINKEDIN_API_KEY, LINKEDIN_SECRET_KEY);
