@@ -17,13 +17,17 @@ router.get("/login", (req, res) => {
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
+router.get("/logout", (req, res) => {
+  req.logout();
+  res.redirect("/");
+});
 
 router.get("/auth/linkedin", passport.authenticate("linkedin"));
 
 router.get(
   "/auth/linkedin/callback",
   passport.authenticate("linkedin", { failureRedirect: "/login" }),
-  function (req, res) {
+  function(req, res) {
     console.log("success");
     // Successful authentication, redirect home.
     res.redirect("/user/profile");
