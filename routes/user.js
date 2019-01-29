@@ -3,34 +3,17 @@ const router = express.Router();
 const User = require("../models/user.js");
 const axios = require("axios");
 
-router.get("/profile", (req, res, next) => {
-  res.render("profilepro", { user: req.user }); // shows current user information, can then be edited
+router.get("/profile/edit", (req, res, next) => {
+  res.render("user/edit", { user: req.user }); // shows current user information, can then be edited
   console.log(req.user);
 });
 
-router.get("/me/:id", (req, res) => {
-  console.log(req.params);
+router.get("/profile/", (req, res, next) => {
+  res.render("user/show", { user: req.user }); // shows current user information, can then be edited
+  console.log(req.user);
 });
 
-// const linkedInApi = axios.create({
-//   baseUrl: "https://api.linkedin.com/v1/people/"
-// });
-
-// const linkedinprofile =
-//   "{linkedinId}:(picture-url,first-name,last-name,summary)?format=json";
-
-// function getLinkedinInfo(linkedinprofile) {
-//   linkedInApi
-//     .get(theName)
-//     .then(responseFromAPI => {
-//       console.log("Response from API is: ", responseFromAPI.data);
-//     })
-//     .catch(err => {
-//       console.log("Error is: ", err);
-//     });
-// }
-
-router.post("/profile", (req, res, next) => {
+router.post("/profile/edit", (req, res, next) => {
   const { firstName, lastName, role, summary } = req.body;
   console.log(req.body);
   console.log("THIS IS THE REQ USER", req.user);

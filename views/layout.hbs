@@ -15,13 +15,23 @@
   <nav>
     <div class="nav navbar-nav">
       <div id="navbar">
-        <a href="#students">Students</a>
-        <a href="#news">Log in</a>
-        <a href="#contact">Sign up</a>
-        <a href="#concept">Our concept</a>
+        <li>
+          {{#if user}}
+          <p class="navbar-text">
+          </p>
+        </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="/logout">Logout</a>
+          </li>
+          {{else}}
+          <a href="login">Login</a>
+          <a href="signup">Sign up</a>
+          {{/if}}
+          <a href="#concept">Our concept</a>
       </div>
   </nav>
-
 
   {{{body}}}
 
