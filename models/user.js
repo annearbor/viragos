@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const UserSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
-  //email: String,
+  email: String,
   linkedinId: String,
   // currentPosition: String,
   // currentCompany: String,

@@ -1,15 +1,16 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user.js");
-
-router.get("/profile/edit", (req, res, next) => {
-  res.render("user/edit", { user: req.user }); // shows current user information, can then be edited
-  console.log(req.user);
-});
+const axios = require("axios");
 
 router.get("/profile/", (req, res, next) => {
   res.render("user/show", { user: req.user }); // shows current user information, can then be edited
   console.log(req.user);
+});
+
+router.get("/profile/edit", (req, res, next) => {
+  console.log(req.user);
+  res.render("user/edit", { user: req.user }); // shows current user information, can then be edited
 });
 
 router.post("/profile/edit", (req, res, next) => {
@@ -28,7 +29,7 @@ router.post("/profile/edit", (req, res, next) => {
     }
   ).then(user => {
     console.log("user", user);
-    res.redirect("/"); // what to do ?
+    res.redirect("/profile"); // what to do ?
   });
 });
 
