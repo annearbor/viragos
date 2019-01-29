@@ -5,16 +5,16 @@ const UserSchema = mongoose.Schema({
   lastName: String,
   email: String,
   linkedinId: String,
-  // currentPosition: String,
-  // currentCompany: String,
+  currentPosition: String,
+  currentCompany: String,
   role: { type: String, enum: ["Mentor", "Mentee"] },
-  //   university: String,
-  //   gradYear: Number,
-  //   phone: Number,
-  //   languages: [String],
-  //   picture: String,
-  summary: String
-  // interests: [String],
+  //university: String,
+  // gradYear: Number,
+  //languages: [String],
+  picture: String,
+  summary: String,
+  //interests: [String]
+  linkedinProfile: Object
 });
 
 const User = mongoose.model("User", UserSchema);
