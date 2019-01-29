@@ -3,7 +3,17 @@ const router = express.Router();
 const User = require("../models/user.js");
 const axios = require("axios");
 
-router.get("/profile/", (req, res, next) => {
+// const ensureLogin = require("connect-ensure-login");
+
+// function ensureAuthenticated(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   } else {
+//     res.redirect("/login");
+//   }
+
+//add function call here
+router.get("/profile", (req, res, next) => {
   res.render("user/show", { user: req.user }); // shows current user information, can then be edited
   console.log(req.user);
 });

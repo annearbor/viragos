@@ -76,16 +76,15 @@ passport.use(
     },
     (token, tokenSecret, profile, done) => {
       process.nextTick(function() {
-        console.log("inside function", token, tokenSecret);
+        console.log("inside function", profile, token, tokenSecret);
 
         User.findOne({ linkedinId: profile.id }).then(user => {
           console.log("user", user);
 
           if (user === null) {
-            // make the axios request here
-
             User.create({
-              linkedinId: profile.id
+              linkedinId: profile.id,
+              linkedinProfile: profile
             }).then(user => {
               return done(null, user);
             });
