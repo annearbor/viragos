@@ -17,7 +17,7 @@ router.get("/login", (req, res) => {
 
 //post route from login REDIRECT TO PROFILE WITH REQ.USER
 router.post("/login", (req, res) => {
-  res.redirect("/user/profile", { user: req.user });
+  res.redirect("/profile", { user: req.user });
 });
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
