@@ -1,33 +1,11 @@
 <h2>Personal information</h2>
-<form action="/profile" method="post">
-  <div class="col-md-3 col-xs-12">
-    <h4>First name</h4>
 
-    <input name="firstName" placeholder="First name" type="text" class="form-control" value="">
-    <h4>Last name</h4>
-    <input name="lastName" placeholder="Last name" type="text" class="form-control" value="">
+{{#fromDB}}
 
-  </div>
+{{{user.firstName}}
+{{user.lastName}}
+{{user.role}}
+{{user.currentPosition}}
+{{user.summary}}
 
-  <div class="col-md-3 col-xs-12"></div>
-  <h4>Mentor or Mentee?</h4>
-
-  <input type="radio" name="role" value="mentor"> Mentor<br>
-  <input type="radio" name="role" value="mentee"> Mentee<br>
-
-  </div>
-
-  <div class="col-md-8 col-xs-12">
-    <h4>Who are you in a nutshell?</h4>
-
-    <input name="summary" placeholder="Who are you?" type="text" class="form-control" value="">
-    <button onclick="location.href='/profile/edit'" type="button">
-      Edit profile</button>
-    <a href="/profile/edit">This is an edit button</a>
-
-
-
-
-
-</form>
-</div>
+{{#fromDB}}

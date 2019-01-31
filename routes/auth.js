@@ -15,10 +15,30 @@ router.get("/login", (req, res) => {
 
 //post route from login REDIRECT TO PROFILE WITH REQ.USER
 router.post("/login", (req, res) => {
-  res.redirect("/profile", { user: req.user });
+  // console.log(req.user);
+  //{ user: req.user }
+  res.redirect("profile/edit");
+  // res.redirect();
 });
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
+});
+router.post("/signup", (req, res) => {
+  const { firstName, lastName, email, password } = req.body;
+
+  User.create({
+    firstName,
+    lastName,
+    email,
+    password
+  })
+    .then(user => {
+      console.log("user", user);
+      console.log("this shit worked yo!");
+
+      // res.redirect("/user/show"); // what to do ?
+    })
+    .catch(err => console.log(err));
 });
 router.get("/logout", (req, res) => {
   req.logout();
@@ -34,7 +54,7 @@ router.get(
     console.log("success");
     // Successful authentication, redirect to profile.
 
-    res.redirect("/profile");
+    res.redirect("/profile/edit");
   }
 );
 

@@ -17,10 +17,24 @@
 
   </div>
 
+  <div class="col-md-3 col-xs-12">
+
+    <h4>Location</h4>
+    <input name="currentPosition" placeholder="Location" type="text" class="form-control" value="">
+
+
+  </div>
+
+
   <div class="col-md-8 col-xs-12">
     <h4>Who are you in a nutshell?</h4>
 
     <input name="summary" placeholder="Who are you?" type="text" class="form-control" value="">
-    <button type="submit">Update Info</button>
+    <br>
+    <button onclick="location.href='/profile/edit'" type="button" method="post">
+      Edit profile</button>
+    <a href="/profile/edit" method="post">This is an edit button</a>
+  </div>
+  <button type="submit">Submit123123</button>
+
 </form>
-</div>
