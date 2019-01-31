@@ -18,29 +18,39 @@ router.get("/profile", (req, res, next) => {
   console.log(req.user);
 });
 
+router.post("/profile", (req, res, next) => {
+  res.render("user/show", { user: req.user }); // shows current user information, can then be edited
+  console.log(req.user);
+});
+
 router.get("/profile/edit", (req, res, next) => {
   console.log(req.user);
-  res.render("user/edit", { user: req.user }); // shows current user information, can then be edited
+  console.log("this is a GET call");
+  res.render("user/edit", { user: req.user }); // show the edit page, data can be edited here
 });
 
 router.post("/profile/edit", (req, res, next) => {
-  const { firstName, lastName, role, summary } = req.body;
+  const { firstName, lastName, role, currentPosition, summary } = req.body;
   console.log(req.body);
+  console.log("did this route get called");
   console.log("THIS IS THE REQ USER", req.user);
   User.findByIdAndUpdate(
     { _id: req.user._id },
     {
       $set: {
-        firstName: firstName,
-        lastName: lastName,
-        role: role,
-        summary: summary
+        firstName,
+        lastName,
+        role,
+        currentPosition,
+        summary
       }
     }
-  ).then(user => {
-    console.log("user", user);
-    res.redirect("/profile"); // what to do ?
-  });
+  )
+    .then(user => {
+      console.log("user", user);
+      res.redirect("/user/show"); // what to do ?
+    })
+    .catch(err => console.log(err));
 });
 
 module.exports = router;
