@@ -14,6 +14,7 @@ router.get("/login", (req, res) => {
 });
 
 //post route from login REDIRECT TO PROFILE WITH REQ.USER
+
 router.post("/login", passport.authenticate("local"), (req, res) => {
   // console.log(req.user);
   //{ user: req.user }
@@ -26,6 +27,7 @@ router.get("/signup", (req, res) => {
 });
 router.post("/signup", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
+
 
   User.findOne({ email }, "email", (err, user) => {
     if (user !== null) {
@@ -40,6 +42,19 @@ router.post("/signup", (req, res) => {
       lastName,
       email,
       password
+
+  User.create({
+    firstName,
+    lastName,
+    email,
+    password
+  })
+    .then(user => {
+      console.log("user", user);
+      console.log("this shit worked yo!");
+
+      res.redirect("/login"); // what to do ?
+
     })
       .then(user => {
         console.log("user", user);
@@ -64,10 +79,10 @@ router.get(
     console.log("success");
     // Successful authentication, redirect to profile.
 
-    res.redirect("/profile/edit");
+    res.redirect("/profile/show");
   }
 );
 
-// function ensureAuthenicated >> ensureLoggedin
+// function ensureAuthenicated >> ensureLoggedin?
 
 module.exports = router;
