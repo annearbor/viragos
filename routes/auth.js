@@ -27,18 +27,27 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  User.create({
-    firstName,
-    lastName,
-    email,
-    password
-  })
-    .then(user => {
-      console.log("user", user);
-      console.log("this shit worked yo!");
-      res.redirect("/login");
+  User.findOne({ email }, "email", (err, user) => {
+    if (user !== null) {
+      res.render("auth/signup", { message: "The email already exists" });
+      return;
+    }
+
+    console.log("user", user);
+
+    User.create({
+      firstName,
+      lastName,
+      email,
+      password
     })
-    .catch(err => console.log(err));
+      .then(user => {
+        console.log("user", user);
+        console.log("this shit worked yo!");
+        res.redirect("/login");
+      })
+      .catch(err => console.log(err));
+  });
 });
 
 router.get("/logout", (req, res) => {
