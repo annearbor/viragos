@@ -3,18 +3,18 @@ const mongoose = require("mongoose");
 const UserSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
-  email: String,
+  email: { type: String, required: true },
   password: String,
   linkedinId: String,
   currentPosition: String,
   currentCompany: String,
   role: { type: String, enum: ["Mentor", "Mentee"] },
-  //university: String,
+  // university: String,
   // gradYear: Number,
   //languages: [String],
   picture: String,
   summary: String,
-  //interests: [String]
+  interests: [String],
   linkedinProfile: Object
 });
 
