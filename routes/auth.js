@@ -14,12 +14,13 @@ router.get("/login", (req, res) => {
 });
 
 //post route from login REDIRECT TO PROFILE WITH REQ.USER
-router.post("/login", (req, res) => {
+router.post("/login", passport.authenticate("local"), (req, res) => {
   // console.log(req.user);
   //{ user: req.user }
   res.redirect("profile/edit");
   // res.redirect();
 });
+
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
@@ -35,11 +36,11 @@ router.post("/signup", (req, res) => {
     .then(user => {
       console.log("user", user);
       console.log("this shit worked yo!");
-
-      // res.redirect("/user/show"); // what to do ?
+      res.redirect("/login");
     })
     .catch(err => console.log(err));
 });
+
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
