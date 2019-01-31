@@ -8,12 +8,15 @@ const UserSchema = mongoose.Schema({
   linkedinId: String,
   currentPosition: String,
   currentCompany: String,
+  currentIndustry: String,
   role: { type: String, enum: ["Mentor", "Mentee"] },
   //university: String,
   // gradYear: Number,
   //languages: [String],
   picture: String,
   summary: String,
+  headline: String,
+  location: String,
   //interests: [String]
   linkedinProfile: Object
 });
