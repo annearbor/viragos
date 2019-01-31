@@ -83,6 +83,17 @@ passport.use(
 
           if (user === null) {
             User.create({
+              firstName: profile.name.givenName,
+              lastName: profile.name.familyName,
+              email: profile._json.emailAddress,
+              currentPosition: profile._json.positions.values[0].title,
+              currentCompany: profile._json.positions.values[0].company.name,
+              currentIndustry:
+                profile._json.positions.values[0].company.industry,
+              summary: profile._json.positions.values[0].summary,
+              picture: profile._json.pictureUrl,
+              location: profile._json.location.name,
+              headline: profile._json.headline,
               linkedinId: profile.id,
               linkedinProfile: profile
             }).then(user => {

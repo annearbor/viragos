@@ -14,12 +14,15 @@ router.get("/login", (req, res) => {
 });
 
 //post route from login REDIRECT TO PROFILE WITH REQ.USER
-router.post("/login", (req, res) => {
-  // console.log(req.user);
-  //{ user: req.user }
-  res.redirect("profile/edit");
-  // res.redirect();
-});
+router.post(
+  "/login"
+  // passport.authenticate("local", {
+  //   successRedirect: "/profile",
+  //   failureRedirect: "/login",
+  //   failureFlash: true,
+  //   passReqToCallback: true
+  // })
+);
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
@@ -36,7 +39,7 @@ router.post("/signup", (req, res) => {
       console.log("user", user);
       console.log("this shit worked yo!");
 
-      // res.redirect("/user/show"); // what to do ?
+      res.redirect("/login"); // what to do ?
     })
     .catch(err => console.log(err));
 });
@@ -54,10 +57,10 @@ router.get(
     console.log("success");
     // Successful authentication, redirect to profile.
 
-    res.redirect("/profile/edit");
+    res.redirect("/profile/show");
   }
 );
 
-// function ensureAuthenicated >> ensureLoggedin
+// function ensureAuthenicated >> ensureLoggedin?
 
 module.exports = router;
