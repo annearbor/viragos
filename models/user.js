@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const UserSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
-  email: String,
+  email: String, //require
   password: String,
   linkedinId: String,
   currentPosition: String,
@@ -12,12 +12,12 @@ const UserSchema = mongoose.Schema({
   role: { type: String, enum: ["Mentor", "Mentee"] },
   //university: String,
   // gradYear: Number,
-  //languages: [String],
+  languages: [String],
   picture: String,
   summary: String,
   headline: String,
   location: String,
-  //interests: [String]
+  interests: [String],
   linkedinProfile: Object
 });
 

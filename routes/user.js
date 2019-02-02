@@ -11,7 +11,7 @@ function ensureLogin(req, res, next) {
 }
 
 router.get("/profile/show", ensureLogin, (req, res, next) => {
-  res.render("user/show", { user: req.user }); // shows current user information, can then be edited
+  res.render("user/show", { user: req.user }); // shows current user information / profile
   console.log(req.user);
 });
 
@@ -22,8 +22,25 @@ router.get("/profile/edit", ensureLogin, (req, res, next) => {
 });
 
 router.post("/profile/edit", ensureLogin, (req, res, next) => {
-  const { firstName, lastName, role, currentPosition, summary } = req.body;
-  console.log(req.body);
+  const {
+    firstName,
+    lastName,
+    email,
+    password,
+    role,
+    picture,
+    currentPosition,
+    currentCompany,
+    currentIndustry,
+    summary,
+    headline,
+    location,
+    languages,
+    interests
+  } = req.body;
+  let languagesArr = [];
+  let interestsArr = [];
+  console.log(req.body.languages);
   console.log("did this route get called");
   console.log("THIS IS THE REQ USER", req.user);
   User.findByIdAndUpdate(
@@ -32,9 +49,18 @@ router.post("/profile/edit", ensureLogin, (req, res, next) => {
       $set: {
         firstName,
         lastName,
+        email,
+        password,
         role,
+        picture,
         currentPosition,
-        summary
+        currentCompany,
+        currentIndustry,
+        summary,
+        headline,
+        location,
+        interests: interestsArr,
+        languages: languagesArr
       }
     }
   )
