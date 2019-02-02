@@ -14,35 +14,42 @@ router.get("/login", (req, res) => {
 });
 
 //post route from login REDIRECT TO PROFILE WITH REQ.USER
-router.post(
-  "/login"
-  // passport.authenticate("local", {
-  //   successRedirect: "/profile",
-  //   failureRedirect: "/login",
-  //   failureFlash: true,
-  //   passReqToCallback: true
-  // })
-);
+router.post("/login", passport.authenticate("local"), (req, res) => {
+  // console.log(req.user);
+  //{ user: req.user }
+  res.redirect("profile/edit");
+  // res.redirect();
+});
+
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
 router.post("/signup", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  User.create({
-    firstName,
-    lastName,
-    email,
-    password
-  })
-    .then(user => {
-      console.log("user", user);
-      console.log("this shit worked yo!");
+  User.findOne({ email }, "email", (err, user) => {
+    if (user !== null) {
+      res.render("auth/signup", { message: "The email already exists" });
+      return;
+    }
 
-      res.redirect("/login"); // what to do ?
+    console.log("user", user);
+
+    User.create({
+      firstName,
+      lastName,
+      email,
+      password
     })
-    .catch(err => console.log(err));
+      .then(user => {
+        console.log("user", user);
+        console.log("this shit worked yo!");
+        res.redirect("/login");
+      })
+      .catch(err => console.log(err));
+  });
 });
+
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
@@ -57,10 +64,8 @@ router.get(
     console.log("success");
     // Successful authentication, redirect to profile.
 
-    res.redirect("/profile/show");
+    res.redirect("/profile/edit");
   }
 );
-
-// function ensureAuthenicated >> ensureLoggedin?
 
 module.exports = router;
