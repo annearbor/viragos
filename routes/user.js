@@ -13,17 +13,16 @@ const User = require("../models/user.js");
 //     return next();
 //   } else {
 //     res.redirect("/login");
-
-// function ensureAuthenticated(req, res, next) {
-//   if (req.isAuthenticated()) {
-//     return next();
-//   } else {
-//     res.redirect("/login");
-
+//add function call here
 router.get("/profile/show", (req, res, next) => {
   res.render("user/show", { user: req.user }); // shows current user information, can then be edited
   console.log(req.user);
 });
+
+// router.post("/profile", (req, res, next) => {
+//   res.render("user/show", { user: req.user }); // shows current user information, can then be edited
+//   console.log(req.user);
+// });
 
 router.get("/profile/edit", (req, res, next) => {
   console.log("this is a GET call");
@@ -51,7 +50,7 @@ router.post("/profile/edit", (req, res, next) => {
   )
     .then(user => {
       console.log("user", user);
-      res.redirect("/user/show");
+    res.redirect("/user/show");
     })
     .catch(err => console.log(err));
 });

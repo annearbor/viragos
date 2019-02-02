@@ -1,0 +1,17 @@
+<form action="/results" method="POST">
+  <div class="form-group row align-items-center">
+    <div class="col-auto input-category">
+      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="start">
+        <option selected>Your location</option>
+        {{#each cities}}
+        <option value={{this}}>{{this}}</option>
+        {{/each}}
+      </select>
+    </div>
+  </div>
+
+
+  <form class="example" action="action_page.php">
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>
