@@ -1,19 +1,23 @@
-<h1>Hello {{firstName}}!</h1>
+<h1>Hello {{user.firstName}}!</h1>
 
-<h2>Your Profile Information</h2>
+<h2>Your profile information</h2>
 
-<div class="col-md-3 col-xs-12">
-  <h4>First name</h4>
-  {{user.firstName}}
-</div>
-{{user.lastName}}
-{{user.picture}}
-{{user.role}}
+
+<img src=s{{user.picture}} alt="profilepic" />
+
+<h4> {{user.firstName}} {{user.lastName}}</h4>
+{{user.currentPosition}}
+
+{{user.summary}}
+
 {{user.headline}}
 {{user.location}}
-{{user.currentPosition}}
-{{user.summary}}
+
+
 {{user.email}}
 {{user.currentPosition}}
 {{user.currentCompany}}
 {{user.currentIndustry}}
+
+<div><button><a href="/profile/edit">Edit</a></button>
+</div>

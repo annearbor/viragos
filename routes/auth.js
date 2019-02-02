@@ -1,4 +1,4 @@
-console.log("I am loaded, auth");
+console.log("Auth.js is loaded");
 
 //holds all the routes that have to do with authentication
 require("dotenv").config();
@@ -64,7 +64,7 @@ router.get(
     console.log("success");
     // Successful authentication, redirect to profile.
 
-    res.redirect("/profile/edit");
+    res.redirect("/profile/show");
   }
 );
 

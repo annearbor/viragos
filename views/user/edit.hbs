@@ -1,6 +1,6 @@
 <form action="/profile/edit" method="post" id="editprofile">
   <div class="col-md-3 col-xs-12"></div>
-  <h2>Personal information</h2>
+  <h2>Your profile information</h2>
   <h4>First name</h4>
   <input name="firstName" placeholder="First name" type="text" class="form-control" value="{{user.firstName}}">
   <h4>Last name</h4>
@@ -24,46 +24,58 @@
   <h4>Company</h4>
   <input name="currentCompany" placeholder="Company" type="text" class="form-control" value="{{user.currentCompany}}">
   <h4>Headline</h4>
-  <textarea form="editprofile" name="headline" placeholder="Headline" type="text" class="form-control" value="{{user.headline}}">
+  <textarea name="headline" placeholder="Headline" type="text" class="form-control">
+    {{user.headline}}
   </textarea><br>
   <h4>Summary</h4>
-  <textarea form="editprofile" name="summary" placeholder="Summary" type="text" class="form-control" value="{{user.summary}}">
+  <textarea name="summary" placeholder="Summary" type="text" class="form-control"> {{user.summary}}
   </textarea><br>
   <h4>Languages</h4>
-  <fieldset>
-    <ul>
-      <li>
-        <label>
-          <input type="checkbox" name="language" value="English">
-          English
-        </label>
-      </li>
-      <li>
-        <label>
-          <input type="checkbox" name="language" value="German">
-          German
-        </label>
-      </li>
-      <li>
-        <label>
-          <input type="checkbox" name="language" value="French">
-          French
-        </label>
-      </li>
-      <li>
-        <label>
-          <input name="interests" placeholder="other" type="text" class="form-control" value="">
-        </label>
-      </li>
-    </ul>
-  </fieldset>
-  <h4>Interests</h4>
-  {{!-- turn this into checkboxes, button, or else --}}
-  <input name="interests" placeholder="Interests" type="text" class="form-control" value="">
-  <br>
 
-  <br>
-  </div>
-  <button type="submit">Update info</button>
+  {{!-- <select class="custom-select md-form" multiple>
+    <option value="" disabled selected>Select Languages</option>
+    <option value="" data-icon="" class=""> --}}
+
+      <div class="btn-group btn-group-toggle" name="" data-toggle="buttons">
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="languages" value="german" autocomplete="off"> German
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="languages" value="french" autocomplete="off"> French
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="languages" value="italian" autocomplete="off"> Italian
+        </label>
+      </div>
+
+
+      <h4>Sectors your interested in</h4>
+      {{!-- turn this into checkboxes, button, or else --}}
+      <div class="btn-group btn-group-toggle" name="" data-toggle="buttons">
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="interests" value="AAF" autocomplete="off"> Agriculture, Animals, Food
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="interests" value="TSE" autocomplete="off">Tech, Science, Engineering
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="interests" value="MWS" autocomplete="off">Medical, Wellbeing and Sport
+        </label>
+        <label class="btn btn-secondary">
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="interests" value="GLE" autocomplete="off">Governement, Law, Education
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="interests" value="AFI" autocomplete="off">Accountancy, Finance, Insurance
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="interests" value="BST" autocomplete="off">Business, Sales, Tourism
+        </label>
+      </div>
+      <br>
+      <br>
+
+      <button class="btn-save btn btn-primary btn-sm" type="submit">Update info</button>
 
 </form>

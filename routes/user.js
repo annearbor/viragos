@@ -34,15 +34,26 @@ router.post("/profile/edit", ensureLogin, (req, res, next) => {
     currentIndustry,
     summary,
     headline,
-    location,
-    languages,
-    interests
+    location
   } = req.body;
-  let languagesArr = [];
-  let interestsArr = [];
-  console.log(req.body.languages);
-  console.log("did this route get called");
-  console.log("THIS IS THE REQ USER", req.user);
+  let languages = req.body.languages;
+  let interests = req.body.interests;
+
+  console.log("LANGUAGESSSSSSS", typeof languages);
+  console.log("Interestsssss", typeof interests);
+
+  if (typeof languages !== Array) {
+    languages = [languages];
+  }
+
+  if (typeof interests !== Array) {
+    interests = [interests];
+  }
+
+  console.log("THIS IS THE REQ.BODZ", req.body);
+
+  console.log("LANGUAGESSSSSSS", typeof languages);
+  //console.log("THIS IS THE REQ USER", req.user);
   User.findByIdAndUpdate(
     { _id: req.user._id },
     {
@@ -59,14 +70,14 @@ router.post("/profile/edit", ensureLogin, (req, res, next) => {
         summary,
         headline,
         location,
-        interests: interestsArr,
-        languages: languagesArr
+        interests,
+        languages
       }
     }
   )
     .then(user => {
-      console.log("user", user);
-      res.redirect("/user/show");
+      // console.log("user", user);
+      res.redirect("/profile/show");
     })
     .catch(err => console.log(err));
 });
