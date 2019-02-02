@@ -1,11 +1,22 @@
 <h2>Personal information</h2>
+<div class="profile">
 
-{{#fromDB}}
+  {{#each user}}
+  {{profile.name.givenName}}
+  {{user.lastName}}
+  {{user.role}}
+  {{user.currentPosition}}
+  {{user.summary}}
 
-{{{user.firstName}}
-{{user.lastName}}
-{{user.role}}
-{{user.currentPosition}}
-{{user.summary}}
+  {{/each}}
 
-{{#fromDB}}
+
+
+
+
+  {{User.firstName}}
+  lastName,
+  role,
+  currentPosition,
+  summary
+</div>

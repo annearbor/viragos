@@ -18,10 +18,7 @@ const User = require("./models/user");
 const axios = require("axios");
 
 mongoose
-  .connect(
-    "mongodb://localhost/project2-viragos",
-    { useNewUrlParser: true }
-  )
+  .connect("mongodb://localhost/project2-viragos", { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -116,5 +113,7 @@ const auth = require("./routes/auth");
 app.use("/", auth);
 const user = require("./routes/user");
 app.use("/", user);
+const search = require("./routes/search");
+app.use("/", search);
 
 module.exports = app;
