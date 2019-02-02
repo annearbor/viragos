@@ -13,6 +13,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 
 const User = require("./models/user");
 const axios = require("axios");
@@ -103,6 +104,28 @@ passport.use(
       });
     }
   )
+);
+
+passport.use(
+  new LocalStrategy({ usernameField: "email" }, (giraffe, password, next) => {
+    console.log(">>>>>>> YES 0 <<<<<<<<<<<<<<<<<<<<<<<<<<<");
+    User.findOne({ email: giraffe }, (err, user) => {
+      console.log(">>>>>>> YES 1 <<<<<<<<<<<<<<<<<<<<<<<<<<<");
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return next(null, false, { message: "Incorrect username" });
+      }
+      //if (!bcrypt.compareSync(password, user.password)) {
+      if (password !== user.password) {
+        return next(null, false, { message: "Incorrect password" });
+      }
+
+      console.log(">>>>>>> YES <<<<<<<<<<<<<<<<<<<<<<<<<<<");
+      return next(null, user);
+    });
+  })
 );
 
 app.use(passport.initialize());
