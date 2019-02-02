@@ -8,7 +8,8 @@ function ensureLogin(req, res, next) {
   } else {
     res.redirect("/login");
   }
-}
+};
+
 
 router.get("/profile/show", ensureLogin, (req, res, next) => {
   res.render("user/show", { user: req.user }); // shows current user information / profile
@@ -16,6 +17,7 @@ router.get("/profile/show", ensureLogin, (req, res, next) => {
 });
 
 router.get("/profile/edit", ensureLogin, (req, res, next) => {
+
   console.log(req.user);
   console.log("this is a GET call");
   res.render("user/edit", { user: req.user }); // show the edit page, data can be edited here

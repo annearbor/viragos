@@ -20,6 +20,7 @@ const axios = require("axios");
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -147,5 +148,7 @@ const auth = require("./routes/auth");
 app.use("/", auth);
 const user = require("./routes/user");
 app.use("/", user);
+const search = require("./routes/search");
+app.use("/", search);
 
 module.exports = app;

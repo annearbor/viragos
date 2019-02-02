@@ -1,3 +1,4 @@
+
 <form action="/profile/edit" method="post" id="editprofile">
   <div class="col-md-3 col-xs-12"></div>
   <h2>Your profile information</h2>
@@ -21,6 +22,7 @@
   <h4>Current Position</h4>
   <input name="currentPosition" type="text" class="form-control" value="{{user.currentPosition}}">
 
+
   <h4>Company</h4>
   <input name="currentCompany" placeholder="Company" type="text" class="form-control" value="{{user.currentCompany}}">
   <h4>Headline</h4>
@@ -31,6 +33,7 @@
   <textarea name="summary" placeholder="Summary" type="text" class="form-control"> {{user.summary}}
   </textarea><br>
   <h4>Languages</h4>
+
 
   {{!-- <select class="custom-select md-form" multiple>
     <option value="" disabled selected>Select Languages</option>
@@ -48,6 +51,8 @@
         </label>
       </div>
 
+
+  </div>
 
       <h4>Sectors your interested in</h4>
       {{!-- turn this into checkboxes, button, or else --}}
@@ -77,5 +82,6 @@
       <br>
 
       <button class="btn-save btn btn-primary btn-sm" type="submit">Update info</button>
+
 
 </form>
