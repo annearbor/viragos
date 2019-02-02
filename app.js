@@ -13,12 +13,14 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
+const LocalStrategy = require("passport-local").Strategy;
 
 const User = require("./models/user");
 const axios = require("axios");
 
 mongoose
-  .connect("mongodb://localhost/project2-viragos", { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
+
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -80,6 +82,17 @@ passport.use(
 
           if (user === null) {
             User.create({
+              firstName: profile.name.givenName,
+              lastName: profile.name.familyName,
+              email: profile._json.emailAddress,
+              currentPosition: profile._json.positions.values[0].title,
+              currentCompany: profile._json.positions.values[0].company.name,
+              currentIndustry:
+                profile._json.positions.values[0].company.industry,
+              summary: profile._json.positions.values[0].summary,
+              picture: profile._json.pictureUrl,
+              location: profile._json.location.name,
+              headline: profile._json.headline,
               linkedinId: profile.id,
               linkedinProfile: profile
             }).then(user => {
@@ -92,6 +105,28 @@ passport.use(
       });
     }
   )
+);
+
+passport.use(
+  new LocalStrategy({ usernameField: "email" }, (giraffe, password, next) => {
+    console.log(">>>>>>> YES 0 <<<<<<<<<<<<<<<<<<<<<<<<<<<");
+    User.findOne({ email: giraffe }, (err, user) => {
+      console.log(">>>>>>> YES 1 <<<<<<<<<<<<<<<<<<<<<<<<<<<");
+      if (err) {
+        return next(err);
+      }
+      if (!user) {
+        return next(null, false, { message: "Incorrect username" });
+      }
+      //if (!bcrypt.compareSync(password, user.password)) {
+      if (password !== user.password) {
+        return next(null, false, { message: "Incorrect password" });
+      }
+
+      console.log(">>>>>>> YES <<<<<<<<<<<<<<<<<<<<<<<<<<<");
+      return next(null, user);
+    });
+  })
 );
 
 app.use(passport.initialize());
