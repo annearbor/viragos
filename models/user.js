@@ -12,13 +12,13 @@ const UserSchema = mongoose.Schema({
   role: { type: String, enum: ["Mentor", "Mentee"] },
   // university: String,
   // gradYear: Number,
-  //languages: [String],
+  languages: [String],
   picture: String,
   summary: String,
   interests: [String],
   headline: String,
   location: String,
-  //interests: [String]
+  interests: [String],
   linkedinProfile: Object
 });
 

@@ -1,15 +1,23 @@
-<h2>Personal information</h2>
-<div class="profile">
 
-  {{#each user}}
-  {{profile.name.givenName}}
-  {{user.lastName}}
-  {{user.role}}
-  {{user.currentPosition}}
-  {{user.summary}}
+<h1>Hello {{user.firstName}}!</h1>
 
-  {{/each}}
+<h2>Your profile information</h2>
 
 
+<img src=s{{user.picture}} alt="profilepic" />
 
-</div>
+<h4> {{user.firstName}} {{user.lastName}}</h4>
+{{user.currentPosition}}
+
+{{user.summary}}
+
+{{user.headline}}
+{{user.location}}
+
+
+{{user.email}}
+{{user.currentPosition}}
+{{user.currentCompany}}
+{{user.currentIndustry}}
+
+<div><button><a href="/profile/edit">Edit</a></button>
