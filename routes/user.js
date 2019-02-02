@@ -1,27 +1,29 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user.js");
-const axios = require("axios");
 
 // const ensureLogin = require("connect-ensure-login");
+
+// authRoutes.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+//   res.render("private", { user: req.user });
+// });
+
+// function ensureLogin(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   } else {
+//     res.redirect("/login");
 
 // function ensureAuthenticated(req, res, next) {
 //   if (req.isAuthenticated()) {
 //     return next();
 //   } else {
 //     res.redirect("/login");
-//   }
 
-//add function call here
-router.get("/profile", (req, res, next) => {
+router.get("/profile/show", (req, res, next) => {
   res.render("user/show", { user: req.user }); // shows current user information, can then be edited
   console.log(req.user);
 });
-
-// router.post("/profile", (req, res, next) => {
-//   res.render("user/show", { user: req.user }); // shows current user information, can then be edited
-//   console.log(req.user);
-// });
 
 router.get("/profile/edit", (req, res, next) => {
   console.log("this is a GET call");
@@ -49,7 +51,7 @@ router.post("/profile/edit", (req, res, next) => {
   )
     .then(user => {
       console.log("user", user);
-      res.redirect("/user/show"); // what to do ?
+      res.redirect("/user/show");
     })
     .catch(err => console.log(err));
 });
