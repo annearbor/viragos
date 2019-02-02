@@ -26,6 +26,7 @@ router.get("/profile/show", (req, res, next) => {
 });
 
 router.get("/profile/edit", (req, res, next) => {
+  console.log("this is a GET call");
   console.log(req.user);
   console.log("this is a GET call");
   res.render("user/edit", { user: req.user }); // show the edit page, data can be edited here
