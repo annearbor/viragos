@@ -4,12 +4,21 @@ const User = require("../models/user.js");
 
 // const ensureLogin = require("connect-ensure-login");
 
+// authRoutes.get("/private-page", ensureLogin.ensureLoggedIn(), (req, res) => {
+//   res.render("private", { user: req.user });
+// });
+
+// function ensureLogin(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   } else {
+//     res.redirect("/login");
+
 // function ensureAuthenticated(req, res, next) {
 //   if (req.isAuthenticated()) {
 //     return next();
 //   } else {
 //     res.redirect("/login");
-//
 
 router.get("/profile/show", (req, res, next) => {
   res.render("user/show", { user: req.user }); // shows current user information, can then be edited
