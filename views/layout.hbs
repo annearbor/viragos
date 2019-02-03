@@ -13,11 +13,50 @@
 </head>
 
 <body>
+
+  <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
+    <a href="/"><img src="images/viragos.png" alt="viragos-logo"></a>
+
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ml-auto">
+
+        <li class="nav-item my-sm-0">
+          <a class="nav-link" href="#concept">Our concept<span class="sr-only">(current)</span></a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#about">About us</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="mailto:camille.chapleau@hotmail.fr">Contact</a>
+        </li>
+
+        {{#if user}}
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="signup">Sign up</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="login">Login</a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+
+
+
+
+  {{!--
   <nav>
     <div class="nav navbar-nav">
       <div class="navbar-brand">
         <a href="/"><img src="images/viragos.png" alt="viragos-logo"></a>
-        </span>
       </div>
 
       <div id="navbar">
@@ -27,6 +66,7 @@
           </p>
         </li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right">
           <li>
             <a href="/logout">Logout</a>
@@ -36,9 +76,11 @@
           <a href="signup">Sign up</a>
           {{/if}}
           <a href="mailto:camille.chapleau@hotmail.fr">Contact</a>
+          <a href="#aboutus">About us</a>
           <a href="#concept">Our concept</a>
       </div>
-  </nav>
+    </div>
+  </nav>--}}
 
   {{{body}}}
 

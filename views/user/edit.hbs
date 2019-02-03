@@ -1,43 +1,40 @@
 <form action="/profile/edit" method="post">
-  <div class="col-md-3 col-xs-12">
 
-    <h2>Personal information</h2>
+  <div class="container">
+    <div class="row">
 
+      <div class="col-md-4 offset-md-4">
 
+        <h2>Personal information</h2>
+        <br>
 
+        <h4>First name</h4>
+        <input name="firstName" placeholder="First name" type="text" class="form-control" value="">
+        <h4>Last name</h4>
+        <input name="lastName" placeholder="Last name" type="text" class="form-control" value="">
+        <h4>Email</h4>
+        <input name="email" placeholder="Email" type="text" class="form-control" value="">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        <h4>Password</h4>
+        <input name="password" placeholder="Password" type="password" class="form-control" value="">
 
+        <h4>Mentor or Mentee?</h4>
+        <input type="radio" name="role" value="mentor"> Mentor<br>
+        <input type="radio" name="role" value="mentee"> Mentee<br>
 
+        <h4>Location</h4>
+        <input name="currentPosition" placeholder="Location" type="text" class="form-control" value="">
 
-    <h4>First name</h4>
-    <input name="firstName" placeholder="First name" type="text" class="form-control" value="">
-    <h4>Last name</h4>
-    <input name="lastName" placeholder="Last name" type="text" class="form-control" value="">
-    <h4>Email</h4>
-    <input name="email" placeholder="Email" type="text" class="form-control" value="">
-    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    <h4>Password</h4>
-    <input name="password" placeholder="Password" type="password" class="form-control" value="">
+        <h4>Company</h4>
+        <input name="currentCompany" placeholder="Company" type="text" class="form-control" value="">
+      </div>
+      <div class="col-md-4 offset-md-4">
+        <h4>Summary</h4>
+        <input name="summary" placeholder="Who are you in a nutshell ?" type="text" class="form-control" value="">
+        <br>
+        <button type="submit">Update info</button>
+      </div>
 
-    <h4>Mentor or Mentee?</h4>
-    <input type="radio" name="role" value="mentor"> Mentor<br>
-    <input type="radio" name="role" value="mentee"> Mentee<br>
-
-    <h4>Location</h4>
-    <input name="currentPosition" placeholder="Location" type="text" class="form-control" value="">
-
-    <h4>Company</h4>
-    <input name="currentCompany" placeholder="Company" type="text" class="form-control" value="">
-
-
+    </div>
   </div>
-
-  <div class="col-md-8 col-xs-12">
-    <h4>Summary</h4>
-
-    <input name="summary" placeholder="Who are you in a nutshell ?" type="text" class="form-control" value="">
-    <br>
-    <button type="submit">Update info</button>
-  </div>
-
-
 </form>

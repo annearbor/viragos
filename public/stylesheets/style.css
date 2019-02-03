@@ -7,6 +7,7 @@ body {
 #navbar {
   overflow: hidden;
   background-color: white;
+  position: sticky;
 }
 
 /* Navbar links */
@@ -15,12 +16,12 @@ body {
   display: block;
   color: #808080;
   text-align: center;
-  padding: 18px;
+  padding: 20px;
   text-decoration: none;
 }
 
 h4 {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 nav {
@@ -112,9 +113,9 @@ body {
   float: right;
   display: block;
   color: #8c8c8c;
-  text-align: center;
   padding: 18px;
   text-decoration: none;
+  margin-bottom: 10px;
 }
 
 nav {
@@ -135,15 +136,6 @@ nav {
 
 .sticky + .content {
   padding-top: 60px;
-}
-
-/* Dropdown Button */
-.dropbtn {
-  background-color: #bfbfbf;
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
 }
 
 .dropdown {
