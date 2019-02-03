@@ -1,6 +1,11 @@
 
+
 <form action="/profile/edit" method="post" id="editprofile">
-  <div class="col-md-3 col-xs-12"></div>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-md-4 offset-md-4">
   <h2>Your profile information</h2>
   <h4>First name</h4>
   <input name="firstName" placeholder="First name" type="text" class="form-control" value="{{user.firstName}}">
@@ -82,6 +87,4 @@
       <br>
 
       <button class="btn-save btn btn-primary btn-sm" type="submit">Update info</button>
-
-
 </form>
