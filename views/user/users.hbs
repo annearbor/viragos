@@ -3,7 +3,6 @@
 </div>
 
 <div class="search-form p-4 col-8">
-
   <form action="/results" method="POST">
     <h4>Location</h4>
     <div class="form-group row align-items-center">
@@ -34,74 +33,57 @@
 
     <h4>Languages</h4>
 
-    <div class="form-group row align-items-center">
-      <div class="col-auto input-category">
-        <input type="checkbox" name="languages" value="German"> German</br>
-        <input type="checkbox" name="languages" value="English"> English</br>
-        <input type="checkbox" name="languages" value="French"> French</br>
-      </div>
-    </div>
-
-  </form>
-</div>
-</div>
-
-{{!--
-
-<div class="row">
-  <div class="col-sm-3">
-    <div class="card" style="width: 18rem;">
-      <img src={{user.picture}} class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <h5 class="card-title">Card title</h5>
-        <a href="#" class="btn btn-primary">Discover</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-3">
-    <div class="card" style="width: 18rem;">
-      <img src={{user.picture}} class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-          content.</p>
-        <h5 class="card-title">Card title</h5>
-        <a href="#" class="btn btn-primary">Discover</a>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<form action="/results" method="POST">
-  <div class="form-group row align-items-center">
+    <div class="form-group row align-items-center"></div>
     <div class="col-auto input-category">
-      <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="start">
-        <option selected>Your location</option>
-        {{#each cities}}
-        <option value={{this}}>{{this}}</option>
-        {{/each}}
-      </select>
+      <input type="checkbox" name="languages" value="German"> German</br>
+      <input type="checkbox" name="languages" value="English"> English</br>
+      <input type="checkbox" name="languages" value="French"> French</br>
+      <input type="checkbox" name="languages" value="Spanish"> Spanish</br>
+      <input type="checkbox" name="languages" value="Italian"> Italian</br>
     </div>
+</div>
+</form>
+
+
+
+
+{{!-- users.hbs (you should call this index.hbs) output is all users or result from the search--}}
+<h2 class="text-center mt-4">Result(s) for your search...</h2>
+
+<div class="container">
+  <div class="row">
+
+    {{#each results}}
+    <div class="card col-sm-4 m-2" style="width: 18rem;">
+      <img src="/images/IMG_0002.JPG" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{this.firstName}}</h5>
+        <p class="card-text">{{this.interests}}</p>
+        <p class="card-text">{{this.role}}</p>
+        <p class="card-text">{{this.location}}</p>
+        <a href="#" class="btn btn-primary">Show Profile</a>
+      </div>
+    </div>
+    {{/each}}
+
   </div>
+</div>
 
 
-  <form class="example" action="action_page.php">
-    <input type="text" placeholder="Search.." name="search">
-    <button type="submit"><i class="fa fa-search"></i></button>
-  </form>
-
-  --}}
+</div>
+</div>
+{{!--
+firstName,
+lastName,
+email,
+password,
+role,
+picture,
+currentPosition,
+currentCompany,
+currentIndustry,
+summary,
+headline,
+location,
+interests,
+languages --}}

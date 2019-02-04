@@ -15,7 +15,6 @@ const UserSchema = mongoose.Schema({
   languages: [String],
   picture: String,
   summary: String,
-  interests: [String],
   headline: String,
   location: String,
   interests: [String],
