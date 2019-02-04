@@ -1,9 +1,39 @@
 <h2 class="text-center mt-4">Result(s) for your search...</h2>
+<div class="container">
+  <div class="row">
 
-{{#each result}}
 
-{{this.firstName}}
-{{this.role}}
-{{this.currentPosition}}
+    <div class="card" style="width: 18rem;">
 
-{{/each}}
+      {{#each results}}
+      <img src="/images/IMG_0002.JPG" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{this.firstName}}</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+          content.</p>
+        <a href="#" class="btn btn-primary"></a>
+        {{/each}}
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+{{!-- currentPosition: String,
+currentCompany: String,
+currentIndustry: String,
+role: { type: String, enum: ["Mentor", "Mentee"] },
+// university: String,
+// gradYear: Number,
+languages: [String],
+picture: String,
+summary: String,
+headline: String,
+location: String,
+interests: [String],
+linkedinProfile: Object --}}

@@ -3,7 +3,14 @@ const router = express.Router();
 const User = require("../models/user");
 
 router.get("/users", (req, res, next) => {
-  res.render("user/users", { user: req.user });
+  User.find()
+    .then(results => {
+      res.render("user/users", { results, user: req.user });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
   console.log(req.user);
 });
 
@@ -20,8 +27,8 @@ router.post("/results", (req, res) => {
   console.log("query", query);
 
   User.find(query)
-    .then(result => {
-      res.render("search/results", { result });
+    .then(results => {
+      res.render("search/results", { results });
     })
     .catch(error => {
       console.log(error);
