@@ -6,6 +6,8 @@ require("dotenv").config();
 const passport = require("passport");
 const express = require("express");
 const router = express.Router();
+const bcrypt = require("bcrypt");
+//const salt = bcrypt.genSaltSync(bcryptSalt);
 
 const User = require("../models/user");
 
@@ -32,6 +34,8 @@ router.post("/signup", (req, res) => {
       res.render("auth/signup", { message: "The email already exists" });
       return;
     }
+    //const bcryptSalt = 10;
+    //const hashPass = bcrypt.hashSync(password, salt);
 
     console.log("user", user);
 
@@ -39,7 +43,7 @@ router.post("/signup", (req, res) => {
       firstName,
       lastName,
       email,
-      password
+      password: hashPass
     })
       .then(user => {
         console.log("user", user);

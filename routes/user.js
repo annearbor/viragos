@@ -53,7 +53,8 @@ router.post("/profile/edit", ensureLogin, (req, res, next) => {
   console.log("THIS IS THE REQ.BODZ", req.body);
 
   console.log("LANGUAGESSSSSSS", typeof languages);
-  //console.log("THIS IS THE REQ USER", req.user);
+  console.log("THIS IS THE REQ USER", req.user);
+
   User.findByIdAndUpdate(
     { _id: req.user._id },
     {
