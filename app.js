@@ -8,14 +8,13 @@ const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
 
-const passport = require("passport");
-const createLinkedInStrategy = require("./routes/passport_strategies.js");
-const createLocalStrategy = require("./routes/passport_strategies.js");
-
-const flash = require("connect-flash");
 const session = require("express-session");
 
 const MongoStore = require("connect-mongo")(session);
+
+// const passport = require("passport");
+
+const flash = require("connect-flash");
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
@@ -49,25 +48,8 @@ app.use(
   })
 );
 
-passport.use(createLinkedInStrategy());
-passport.use(createLocalStrategy());
-
-// from strategies serializuser receives a full user object
-//using the session cookie and stores user
-//Each subsequent request will not contain credentials, but rather the unique cookie that identifies the session.
-//In order to support login sessions, Passport will serialize and deserialize user instances to and from the session.
-passport.serializeUser(function(user, callback) {
-  callback(null, user);
-});
-passport.deserializeUser(function(user, callback) {
-  callback(null, user);
-});
-
-//required in Express/ Connect to initialize passport
-app.use(passport.initialize());
-//persistent login sessions
-app.use(passport.session());
 app.use(flash());
+require("./passport")(app);
 
 // Express View engine setup
 

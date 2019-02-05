@@ -3,7 +3,7 @@
 
 <h4> {{user.firstName}} {{user.lastName}}</h4>
 
-<img src="{{user.picture}}" alt="profilepic" />
+<img src='{{user.picture}}' alt="profilepic" />
 
 <p>{{user.currentPosition}}
 </p>
@@ -11,17 +11,13 @@
 <p>{{user.headline}}</p>
 <p>{{user.summary}}</p>
 <p>{{user.location}}</p>
+<b>{{user.role}}</b>
 
 <p>{{user.interests}}</p>
 
 <p>{{user.currentPosition}}</p>
 <p>{{user.currentCompany}}</p>
 <p>{{user.currentIndustry}}</p>
-<br>
-<br>
-<b>{{user.pictureUrl}}</b>
-<br>
-<br>
 {{#if user}}
 <div><button><a href="/profile/edit">Edit your profile</a></button>
 </div>

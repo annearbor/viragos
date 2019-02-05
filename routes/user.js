@@ -1,34 +1,37 @@
 const express = require("express");
 const router = express.Router();
-const User = require("../models/user.js");
+const User = require("../models/user");
+const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
-function ensureLogin(req, res, next) {
-  if (req.isAuthenticated()) {
-    return next();
-  } else {
-    res.redirect("/login");
-  }
-}
+// function ensureLogin(req, res, next) {
+//   if (req.isAuthenticated()) {
+//     return next();
+//   } else {
+//     res.redirect("/login");
+//   }
+// }
 
-router.get("/profile/show", ensureLogin, (req, res, next) => {
+router.get("/profile/show", ensureLoggedIn("/auth/login"), (req, res, next) => {
   res.render("user/show", { user: req.user }); // shows current user information / profile
   console.log(req.user);
+  // })
+  // .catch(err => {
+  //   throw err;
 });
 
-router.get("/profile/edit", ensureLogin, (req, res, next) => {
+router.get("/profile/edit", ensureLoggedIn(), (req, res, next) => {
   console.log(req.user);
   console.log("this is a GET call");
   res.render("user/edit", { user: req.user }); // show the edit page, data can be edited here
 });
 
-router.post("/profile/edit", ensureLogin, (req, res, next) => {
+router.post("/profile/edit", ensureLoggedIn(), (req, res, next) => {
   const {
     firstName,
     lastName,
     email,
     password,
     role,
-    picture,
     currentPosition,
     currentCompany,
     currentIndustry,
@@ -55,6 +58,7 @@ router.post("/profile/edit", ensureLogin, (req, res, next) => {
   console.log("LANGUAGESSSSSSS", typeof languages);
   console.log("THIS IS THE REQ USER", req.user);
 
+  //this only works for linke din users / separate find and update
   User.findByIdAndUpdate(
     { _id: req.user._id },
     {
@@ -64,7 +68,6 @@ router.post("/profile/edit", ensureLogin, (req, res, next) => {
         email,
         password,
         role,
-        picture,
         currentPosition,
         currentCompany,
         currentIndustry,

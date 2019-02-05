@@ -1,14 +1,15 @@
-const bcrypt = require("bcrypt");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
+const passport = require("passport");
 
 const LINKEDIN_API_KEY = process.env.LINKEDIN_API_KEY;
 const LINKEDIN_SECRET_KEY = process.env.LINKEDIN_SECRET_KEY;
+const bcrypt = require("bcrypt");
 
 const User = require("../models/user");
 
-function createLinkedInStrategy() {
-  return new LinkedInStrategy(
+passport.use(
+  new LinkedInStrategy(
     {
       clientID: LINKEDIN_API_KEY,
       clientSecret: LINKEDIN_SECRET_KEY,
@@ -18,16 +19,12 @@ function createLinkedInStrategy() {
     },
     (token, tokenSecret, profile, done) => {
       process.nextTick(function() {
-        console.log(
-          "inside linkedinstrategyfunction",
-          profile,
-          token,
-          tokenSecret
-        );
+        console.log("inside function", profile, token, tokenSecret);
 
         User.findOne({ linkedinId: profile.id }).then(user => {
           console.log("user", user);
 
+          // can this be extracted to auth.js?
           if (user === null) {
             User.create({
               firstName: profile.name.givenName,
@@ -38,7 +35,7 @@ function createLinkedInStrategy() {
               currentIndustry:
                 profile._json.positions.values[0].company.industry,
               summary: profile._json.positions.values[0].summary,
-              picture: profile._json.pictureUrls.values,
+              picture: profile._json.pictureUrl,
               location: profile._json.location.name,
               headline: profile._json.headline,
               linkedinId: profile.id,
@@ -52,31 +49,34 @@ function createLinkedInStrategy() {
         });
       });
     }
-  );
-}
+  )
+);
 
-function createLocalStrategy() {
-  return new LocalStrategy(
-    { usernameField: "email" },
-    (param1, password, next) => {
-      User.findOne({ email: param1 }, (err, user) => {
-        console.log(">>>>>>> YES 1 <<<<<<<<<<<<<<<<<<<<<<<<<<<");
+passport.use(
+  new LocalStrategy(
+    {
+      usernameField: "email",
+      passwordField: "password"
+    },
+    (email, password, next) => {
+      User.findOne({ email }, (err, user) => {
         if (err) {
-          return next(err);
+          next(err);
+          return;
         }
 
         if (!user) {
-          return next(null, false, { message: "Incorrect username" });
-        }
-        if (!bcrypt.compareSync(password, user.password)) {
-          return next(null, false, { message: "Incorrect password" });
+          next(null, false, { message: "Incorrect email" });
+          return;
         }
 
-        return next(null, user);
+        if (!bcrypt.compareSync(password, user.password)) {
+          next(null, false, { message: "Incorrect password" });
+          return;
+        }
+
+        next(null, foundUser);
       });
     }
-  );
-}
-
-module.exports = createLocalStrategy;
-module.exports = createLinkedInStrategy;
+  )
+);
