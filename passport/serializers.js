@@ -5,7 +5,9 @@ passport.serializeUser(function(user, callback) {
   callback(null, user);
 });
 passport.deserializeUser(function(user, callback) {
-  callback(null, user);
+  User.findById(user).then(u => {
+    callback(null, u);
+  });
 });
 
 // passport.serializeUser((user, cb) => {
