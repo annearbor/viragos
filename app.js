@@ -68,11 +68,7 @@ const auth = require("./routes/auth");
 app.use("/", auth);
 const user = require("./routes/user");
 app.use("/", user);
-<<<<<<< HEAD
-//const users = require....
-=======
 const search = require("./routes/search");
 app.use("/", search);
->>>>>>> 69a42dadde231eaf9534cb67e04ea367456eb94f
 
 module.exports = app;

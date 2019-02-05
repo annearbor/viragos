@@ -15,7 +15,7 @@
 <body>
 
   <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
-    <a href="/"><img src="images/viragos.png" alt="viragos-logo"></a>
+    <a href="/"><img src="/images/viragos.png" alt="viragos-logo"></a>
 
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav ml-auto">
@@ -36,16 +36,9 @@
           <a class="nav-link" href="mailto:camille.chapleau@hotmail.fr">Contact</a>
         </li>
 
-        {{#if user}}
-        <li class="nav-item">
-          <a class="nav-link" href="/logout">Logout</a>
-        </li>
-        {{else}}
-        <li class="nav-item">
-          <a class="nav-link" href="signup">Sign up</a>
-        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
+        {{#if user}}
         <li>
           <a href="/logout">Logout</a>
         </li>
