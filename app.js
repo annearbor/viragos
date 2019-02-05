@@ -7,16 +7,14 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
-const passport = require("passport");
+
 const session = require("express-session");
 
 const MongoStore = require("connect-mongo")(session);
 
-const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
-const LocalStrategy = require("passport-local").Strategy;
+// const passport = require("passport");
 
-const User = require("./models/user");
-const axios = require("axios");
+const flash = require("connect-flash");
 
 mongoose
   .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
@@ -51,86 +49,8 @@ app.use(
   })
 );
 
-const LINKEDIN_API_KEY = process.env.LINKEDIN_API_KEY;
-const LINKEDIN_SECRET_KEY = process.env.LINKEDIN_SECRET_KEY;
-
-// from strategy serializuser receives a full user object
-//using the session cookie and stores user inside for us
-//the paramters could be named anything
-passport.serializeUser(function(user, callback) {
-  callback(null, user);
-});
-passport.deserializeUser(function(user, callback) {
-  callback(null, user);
-});
-
-passport.use(
-  new LinkedInStrategy(
-    {
-      clientID: LINKEDIN_API_KEY,
-      clientSecret: LINKEDIN_SECRET_KEY,
-      callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
-      state: true,
-      scope: ["r_emailaddress", "r_basicprofile"]
-    },
-    (token, tokenSecret, profile, done) => {
-      process.nextTick(function() {
-        console.log("inside function", profile, token, tokenSecret);
-
-        User.findOne({ linkedinId: profile.id }).then(user => {
-          console.log("user", user);
-
-          if (user === null) {
-            User.create({
-              firstName: profile.name.givenName,
-              lastName: profile.name.familyName,
-              email: profile._json.emailAddress,
-              currentPosition: profile._json.positions.values[0].title,
-              currentCompany: profile._json.positions.values[0].company.name,
-              currentIndustry:
-                profile._json.positions.values[0].company.industry,
-              summary: profile._json.positions.values[0].summary,
-              picture: profile._json.pictureUrl,
-              location: profile._json.location.name,
-              headline: profile._json.headline,
-              linkedinId: profile.id,
-              linkedinProfile: profile
-            }).then(user => {
-              return done(null, user);
-            });
-          } else {
-            return done(null, user);
-          }
-        });
-      });
-    }
-  )
-);
-
-passport.use(
-  new LocalStrategy({ usernameField: "email" }, (giraffe, password, next) => {
-    console.log(">>>>>>> YES 0 <<<<<<<<<<<<<<<<<<<<<<<<<<<");
-    User.findOne({ email: giraffe }, (err, user) => {
-      console.log(">>>>>>> YES 1 <<<<<<<<<<<<<<<<<<<<<<<<<<<");
-      if (err) {
-        return next(err);
-      }
-      if (!user) {
-        return next(null, false, { message: "Incorrect username" });
-      }
-      //if (!bcrypt.compareSync(password, user.password)) {
-      if (password !== user.password) {
-        return next(null, false, { message: "Incorrect password" });
-      }
-
-      console.log(">>>>>>> YES <<<<<<<<<<<<<<<<<<<<<<<<<<<");
-      return next(null, user);
-    });
-  })
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(flash());
+require("./passport")(app);
 
 // Express View engine setup
 
