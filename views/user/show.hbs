@@ -1,29 +1,24 @@
 <h1>Hello {{user.firstName}}!</h1>
 
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-4 offset-md-4">
-      <h2>Your profile information</h2>
+<h4> {{user.firstName}} {{user.lastName}}</h4>
 
+<img src='{{user.picture}}' alt="profilepic" />
 
-      <img src=s{{user.picture}} alt="profilepic" />
+<p>{{user.currentPosition}}
+</p>
 
-      <h4> {{user.firstName}} {{user.lastName}}</h4>
-      {{user.currentPosition}}
+<p>{{user.headline}}</p>
+<p>{{user.summary}}</p>
+<p>{{user.location}}</p>
+<b>{{user.role}}</b>
 
-      {{user.summary}}
+<p>{{user.interests}}</p>
 
-      {{user.headline}}
-      {{user.location}}
-
-
-      {{user.email}}
-      {{user.currentCompany}}
-      {{user.currentIndustry}}
-      {{user.languages}}
-
-      <div><button><a href="/profile/edit">Edit</a></button>
-
-      </div>
-    </div>
+<p>{{user.currentPosition}}</p>
+<p>{{user.currentCompany}}</p>
+<p>{{user.currentIndustry}}</p>
+{{#if user}}
+<div><button><a href="/profile/edit">Edit your profile</a></button>
+</div>
+{{/if}}

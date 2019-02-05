@@ -177,7 +177,7 @@ footer {
 }
 
 .womanComp {
-  background-image: url("./images/homepage.jpg");
+  background-image: url("/images/homepage.jpg");
   background-size: cover;
   width: 100%;
   height: 130vh;
@@ -270,11 +270,11 @@ footer {
   list-style-type: none;
 }
 
-.womanComp {
+/* .womanComp {
   background-image: url("../images/homepage.jpg");
   background-size: cover;
   width: 100%;
   height: 130vh;
-}
+} */
 
 /*# sourceMappingURL=style.css.map */
