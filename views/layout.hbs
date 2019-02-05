@@ -16,38 +16,33 @@
 
   <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
     <a href="/"><img src="/images/viragos.png" alt="viragos-logo"></a>
-
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav ml-auto">
-
         <li class="nav-item my-sm-0">
           <a class="nav-link" href="/concept">Our concept<span class="sr-only">(current)</span></a>
         </li>
-
         <li class="nav-item">
-          <a class="nav-link" href="/users">Profiles</a>
+          <a class="nav-link" href="/profiles">Profiles</a>
         </li>
-
         <li class="nav-item">
           <a class="nav-link" href="/about">About us</a>
         </li>
-
         <li class="nav-item">
-          <a class="nav-link" href="mailto:camille.chapleau@hotmail.fr">Contact</a>
+          <a class="nav-link" href="mailto:viragos@hotmail.fr">Contact</a>
         </li>
-
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
         {{#if user}}
-        <li>
-          <a href="/logout">Logout</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
         </li>
         {{else}}
-        <a href="signup">Sign up</a>
-        <a href="login">Login</a>
+        <li class="nav-item">
+          <a class="nav-link" href="signup">Sign up</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="login">Login</a>
+        </li>
         {{/if}}
-        <a href="mailto:test@hotmail.fr">Contact</a>
-        <a href="#concept">Our concept</a>
+      </ul>
     </div>
   </nav>
 

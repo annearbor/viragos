@@ -1,74 +1,57 @@
 <form action="/profile/edit" method="post" id="editprofile">
+  <div class="col-md-3 col-xs-12"></div>
+  <h2>Your profile information</h2>
+  <h4>First name</h4>
+  <input name="firstName" placeholder="First name" type="text" class="form-control" value="{{user.firstName}}">
+  <h4>Last name</h4>
+  <input name="
+    lastName" placeholder="Last name" type="text" class="form-control" value="{{user.lastName}}">
+  <h4>Email</h4>
+  <input name="email" placeholder="Email" type="text" class="form-control" value="{{user.email}}">
+  <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+  {{!-- password change in account not profile? --}}
+  {{!-- <h4>Password</h4>
+  <input name="password" placeholder="Password" type="password" class="form-control" value=""> --}}
+  <h4>Mentor or Mentee?</h4>
+  <input type="radio" name="role" value="mentor"> Mentor<br>
+  <input type="radio" name="role" value="mentee"> Mentee<br>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-md-4 offset-md-4">
-        <h2>Your profile information</h2>
-        <h4>First name</h4>
-
-        <input name="firstName" placeholder="First name" type="text" class="form-control" value="{{user.firstName}}"
-          required>
-        <h4>Last name</h4>
-        <input name="
-    lastName" placeholder="Last name" type="text" class="form-control" value="{{user.lastName}}"
-          required>
-        <h4>Email</h4>
-        <input name="email" placeholder="Email" type="text" class="form-control" value="{{user.email}}" required>
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        {{!-- password change in account not profile? --}}
-        {{!-- <h4>Password</h4>
-        <input name="password" placeholder="Password" type="password" class="form-control" value=""> --}}
-        <h4>Mentor or Mentee?</h4>
-        <input type="radio" name="role" value="mentor"> Mentor<br>
-        <input type="radio" name="role" value="mentee"> Mentee<br>
-
-        <h4>Location</h4>
-        <input name="currentLocation" placeholder="Location" type="text" class="form-control" value="{{user.location}}"
-          required>
-        <h4>Current Position</h4>
-        <input name="currentPosition" type="text" class="form-control" value="{{user.currentPosition}}">
+  <h4>Location</h4>
+  <input name="currentLocation" placeholder="Location" type="text" class="form-control" value="{{user.location}}">
+  <h4>Current Position</h4>
+  <input name="currentPosition" type="text" class="form-control" value="{{user.currentPosition}}">
 
 
-        <h4>Company</h4>
-        <input name="currentCompany" placeholder="Company" type="text" class="form-control" value="{{user.currentCompany}}">
-        <h4>Headline</h4>
-        <textarea name="headline" placeholder="Headline" type="text" class="form-control">
+  <h4>Company</h4>
+  <input name="currentCompany" placeholder="Company" type="text" class="form-control" value="{{user.currentCompany}}">
+  <h4>Headline</h4>
+  <textarea name="headline" placeholder="Headline" type="text" class="form-control">
     {{user.headline}}
   </textarea><br>
-        <h4>Summary</h4>
-        <textarea name="summary" placeholder="Summary" type="text" class="form-control"> {{user.summary}}
+  <h4>Summary</h4>
+  <textarea name="summary" placeholder="Summary" type="text" class="form-control"> {{user.summary}}
   </textarea><br>
-        <h4>Languages</h4>
+  <h4>Languages</h4>
 
 
-        {{!-- <select class="custom-select md-form" multiple>
-          <option value="" disabled selected>Select Languages</option>
-          <option value="" data-icon="" class=""> --}}
+  {{!-- <select class="custom-select md-form" multiple>
+    <option value="" disabled selected>Select Languages</option>
+    <option value="" data-icon="" class=""> --}}
 
-<<<<<<< HEAD
-            <div class="btn-group btn-group-toggle" name="" data-toggle="buttons">
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="languages" value="german" autocomplete="off"> German
-              </label>
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="languages" value="french" autocomplete="off"> French
-              </label>
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="languages" value="english" autocomplete="off"> English
-              </label>
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="languages" value="italian" autocomplete="off"> Italian
-              </label>
-            </div>
+      <div class="btn-group btn-group-toggle" name="" data-toggle="buttons">
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="languages" value="german" autocomplete="off"> German
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="languages" value="french" autocomplete="off"> French
+        </label>
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="languages" value="italian" autocomplete="off"> Italian
+        </label>
+      </div>
 
-=======
-<<<<<<< HEAD
+
       <h4>Sectors you're interested in</h4>
-=======
-  </div>
-
-      <h4>Sectors your interested in</h4>
->>>>>>> 69a42dadde231eaf9534cb67e04ea367456eb94f
       {{!-- turn this into checkboxes, button, or else --}}
       <div class="btn-group btn-group-toggle" name="" data-toggle="buttons">
         <label class="btn btn-secondary">
@@ -100,44 +83,8 @@
       </div>
       <br>
       <br>
->>>>>>> profile_view_0202
 
-            {{!-- turn this into checkboxes, button, or else --}}
-            <div class="btn-group btn-group-toggle" name="" data-toggle="buttons">
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="interests" value="Agriculture, Animals,
-                Food" autocomplete="off">
-                Agriculture, Animals,
-                Food
-              </label>
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="interests" value="TSE" autocomplete="off">Tech, Science,
-                Engineering
-              </label>
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="interests" value="MWS" autocomplete="off">Medical, Wellbeing and
-                Sport
-              </label>
-              <label class="btn btn-secondary">
-              </label>
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="interests" value="GLE" autocomplete="off">Governement, Law,
-                Education
-              </label>
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="interests" value="AFI" autocomplete="off">Accountancy, Finance,
-                Insurance
-              </label>
-              <label class="btn btn-secondary">
-                <input type="checkbox" name="interests" value="BST" autocomplete="off">Business, Sales, Tourism
-              </label>
-            </div>
-            <br>
-            <br>
+      <button class="btn-save btn btn-primary btn-sm" type="submit">Update info</button>
 
-            <button class="btn-save btn btn-primary btn-sm" type="submit">Update info</button>
 
-      </div>
-    </div>
-  </div>
 </form>
