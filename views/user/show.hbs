@@ -15,10 +15,16 @@
 
 <p>{{user.interests}}</p>
 
-<p>{{user.currentPosition}}</p>
-<p>{{user.currentCompany}}</p>
-<p>{{user.currentIndustry}}</p>
-{{#if user}}
-<div><button><a href="/profile/edit">Edit your profile</a></button>
+{{user.headline}}
+{{user.location}}
+{{user.role}}
+
+{{user.email}}
+{{user.currentCompany}}
+{{user.currentIndustry}}
+{{user.languages}}
+
+<div><button><a href="/profile/edit">Edit</a></button>
+
 </div>
-{{/if}}
+</div>

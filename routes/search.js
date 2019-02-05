@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
 
-router.get("/users", (req, res, next) => {
+router.get("/profiles", (req, res, next) => {
   User.find()
     .then(results => {
       res.render("user/users", { results, user: req.user });
@@ -39,3 +39,6 @@ module.exports = router;
 
 // store all currentPosition in MONGO lowercase
 // Ex: berlin, montreal,
+
+//currentIndustry: String,
+//role: { type: String, enum: ["Mentor", "Mentee"] },

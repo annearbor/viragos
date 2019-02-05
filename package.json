@@ -26,7 +26,8 @@
     "passport-local": "^1.0.0",
     "passport-oauth": "^1.0.0",
     "serve-favicon": "^2.5.0",
-    "session": "^0.1.0"
+    "session": "^0.1.0",
+    "startbootstrap-4-col-portfolio": "^4.1.1"
   },
   "devDependencies": {
     "nodemon": "^1.12.1"
