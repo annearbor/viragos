@@ -15,6 +15,14 @@
         <h4>Email</h4>
         <input name="email" placeholder="Email" type="text" class="form-control" value="{{user.email}}" required>
         <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+
+
+        <h4>Picture</h4>
+        <form action="/action_page.php">
+          <input type="file" name="pic" accept="image/*">
+        </form>
+
         {{!-- password change in account not profile? --}}
         {{!-- <h4>Password</h4>
         <input name="password" placeholder="Password" type="password" class="form-control" value=""> --}}

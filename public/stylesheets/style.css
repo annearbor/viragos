@@ -20,8 +20,13 @@ body {
   text-decoration: none;
 }
 
+h1 {
+  color: #808080;
+}
+
 h4 {
   margin-top: 12px;
+  color: #808080;
 }
 
 nav {

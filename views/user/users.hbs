@@ -1,51 +1,83 @@
 <div class="search-form p-4 col-8">
-  <h1>Search by ...</h1>
+  <h2>Search by ...</h2>
 </div>
 
-<div class="search-form p-4 col-8">
+<div class="container">
+
+
   <form action="/results" method="POST">
-    <h4>Location</h4>
-    <div class="form-group row align-items-center">
-      <div class="col-auto input-category">
-        <input type="text" placeholder="Search.." name="search">
-      </div>
-    </div>
+    <ul class="nav flex-column">
+      <li class="nav-item">
+        <a class="nav-link active">
 
-    {{#each categories}}
-    <div class="form-check form-check-inline">
-      <input class="form-check-input" type="checkbox" value={{this}} name="category">
-      <label class="form-check-label" for={{this}}>{{this}}</label>
-    </div>
-    {{/each}}
+          <div class="col-md-4">
+            <form action="/results" method="POST">
+              <h4>Location</h4>
+              <div class="form-group row align-items-center">
+                <div class="col-auto input-category">
+                  <input type="text" placeholder="Search..." name="search">
+                </div>
+              </div>
 
-    <br>
-    <button type="submit" class="btn btn-primary">Start search</button>
-    <br>
+              {{#each categories}}
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" value={{this}} name="category">
+                <label class="form-check-label" for={{this}}>{{this}}</label>
+              </div>
+              {{/each}}
 
+        </a>
+      </li>
 
-    <h4>Mentor ?</h4>
+      <li class="nav-item">
+        <a class="nav-link">
 
-    <div class="form-group row align-items-center">
-      <div class="col-auto input-category">
-        <input type="checkbox" name="mentor" value="true">
-      </div>
-    </div>
+          <h4>Are you a mentor ?</h4>
 
-    <h4>Languages</h4>
+          <div class="form-group row align-items-center">
+            <div class="col-auto input-category">
+              <input type="checkbox" name="mentor" value="true">
+            </div>
+          </div>
 
-    <div class="form-group row align-items-center"></div>
-    <div class="col-auto input-category">
-      <input type="checkbox" name="languages" value="German"> German</br>
-      <input type="checkbox" name="languages" value="English"> English</br>
-      <input type="checkbox" name="languages" value="French"> French</br>
-      <input type="checkbox" name="languages" value="Spanish"> Spanish</br>
-      <input type="checkbox" name="languages" value="Italian"> Italian</br>
-    </div>
+          {{#each categories}}
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" value={{this}} name="category">
+            <label class="form-check-label" for={{this}}>{{this}}</label>
+          </div>
+          {{/each}}
+
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link">
+
+          <h4>Languages</h4>
+
+          <div class="form-group row align-items-center">
+            <div class="col-auto input-category">
+              <input type="checkbox" name="languages" value="German"> German</br>
+              <input type="checkbox" name="languages" value="English"> English</br>
+              <input type="checkbox" name="languages" value="French"> French</br>
+              <input type="checkbox" name="languages" value="Spanish"> Spanish</br>
+              <input type="checkbox" name="languages" value="Italian"> Italian</br>
+            </div>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Start search</button>
+          <br>
+
 </div>
+
+
+</a>
+</li>
+
+
 </form>
-
-
-
+</div>
+</div>
 
 {{!-- users.hbs (you should call this index.hbs) output is all users or result from the search--}}
 <h2 class="text-center mt-4">Result(s) for your search...</h2>
@@ -68,10 +100,12 @@
 
   </div>
 </div>
-
+</div>
 
 </div>
 </div>
+</div>
+
 {{!--
 firstName,
 lastName,
