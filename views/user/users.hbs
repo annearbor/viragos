@@ -15,7 +15,7 @@
               <h4>Location</h4>
               <div class="form-group row align-items-center">
                 <div class="col-auto input-category">
-                  <input type="text" placeholder="Search..." name="search">
+                  <input type="text" placeholder="Search..." name="location">
                 </div>
               </div>
 
@@ -80,13 +80,13 @@
 </div>
 
 {{!-- users.hbs (you should call this index.hbs) output is all users or result from the search--}}
-<h2 class="text-center mt-4">Result(s) for your search...</h2>
+<h2 class="text-center mt-4">Discover your next mentor or mentee</h2>
 
 <div class="container">
   <div class="row">
 
     {{#each results}}
-    <div class="card col-sm-4 m-2" style="width: 18rem;">
+    <div class="card col-sm-2 m-3" style="width: 18rem;">
       <img src="/images/IMG_0002.JPG" class="card-img-top" alt="...">
       <div class="card-body">
         <h5 class="card-title">{{this.firstName}}</h5>

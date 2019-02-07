@@ -11,19 +11,34 @@ router.get("/profiles", (req, res, next) => {
       console.log(error);
     });
 
-  console.log(req.user);
+  console.log("REQ DOT USERSSSSSSS", req.user);
 });
 
 // search and find users by location with their currentPosition
 router.post("/results", (req, res) => {
-  const location = req.body.search;
+  let location = req.body.location;
+  let role = req.body.role;
+  let languages = req.body.languages;
+  console.log("this is the roleeeeeeeeeee", role);
+  console.log("this is the languagesssssss", languages);
   console.log(location);
+  let query = {};
 
-  if (location) {
-    query = { currentPosition: location };
-  } else {
-    query = {};
-  }
+  if (languages) query.languages = languages;
+  if (role) query.role = role;
+  if (location) query.location = location;
+
+  //location = "/" + location + "/i";
+  // if (location && role && languages) {
+  //   query = { currentLocation: location, mentor: mentor, languages: languages };
+  // } else if (role) {
+  //   query = { mentor: mentor };
+  // } else if (languages) {
+  //   query = { languages: languages };
+  // } else {
+  //   query = {};
+  // }
+
   console.log("query", query);
 
   User.find(query)
