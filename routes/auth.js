@@ -10,8 +10,9 @@ const router = express.Router();
 const User = require("../models/user");
 const flash = require("connect-flash");
 
+// Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
-const bryptSalt = 10;
+const bcryptSalt = 10;
 
 router.get("/login", (req, res) => {
   console.log("login clicked");
@@ -23,7 +24,7 @@ router.get("/login", (req, res) => {
 router.post("/login", passport.authenticate("local"), (req, res) => {
   console.log(req.user);
   //{ user: req.user }
-  res.redirect("profile/edit");
+  res.redirect("profile/show");
   // res.redirect();
 });
 
@@ -37,6 +38,7 @@ router.post("/login", passport.authenticate("local"), (req, res) => {
 //   })
 // );
 
+//local signup
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
@@ -44,7 +46,7 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  if (email === "" || password === "" || username === "") {
+  if (email === "" || password === "") {
     res.render("auth/signup", { message: "Indicate email and password" });
     return;
   }
@@ -76,6 +78,7 @@ router.post("/signup", (req, res) => {
   });
 });
 
+//linkedin authentication
 router.get("/auth/linkedin", passport.authenticate("linkedin"));
 
 router.get(
@@ -89,6 +92,7 @@ router.get(
   }
 );
 
+//logout
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");

@@ -3,14 +3,6 @@ const router = express.Router();
 const User = require("../models/user");
 const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
-// function ensureLogin(req, res, next) {
-//   if (req.isAuthenticated()) {
-//     return next();
-//   } else {
-//     res.redirect("/login");
-//   }
-// }
-
 router.get("/profile/show", ensureLoggedIn("/auth/login"), (req, res, next) => {
   User.findById(req.user).then(user => {
     user.isMentor = user.role === "Mentor";
@@ -47,6 +39,7 @@ router.post(
       currentIndustry,
       summary,
       headline,
+      //picture,
       location
     } = req.body;
     let languages = req.body.languages;
