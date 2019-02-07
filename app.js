@@ -7,12 +7,12 @@ const hbs = require("hbs");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
-
+const passport = require("passport");
 const session = require("express-session");
 
 const MongoStore = require("connect-mongo")(session);
 
-// const passport = require("passport");
+require("./passport/strategies");
 
 const flash = require("connect-flash");
 
@@ -50,7 +50,9 @@ app.use(
 );
 
 app.use(flash());
-require("./passport")(app);
+// require("passport")(app);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Express View engine setup
 
@@ -60,7 +62,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(favicon(path.join(__dirname, "public", "images", "favicon.ico")));
 
 // default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+app.locals.title = "Viragos";
 
 const index = require("./routes/index");
 app.use("/", index);
