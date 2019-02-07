@@ -48,9 +48,9 @@ router.post(
     console.log("LANGUAGESSSSSSS", typeof languages);
     console.log("Interestsssss", typeof interests);
 
-    if (typeof languages !== Array) {
-      languages = [languages];
-    }
+    // if (typeof languages !== Array) {
+    //   languages = [languages];
+    // }
 
     if (typeof interests !== Array) {
       interests = [interests];
