@@ -11,10 +11,10 @@ router.get("/profile/show", ensureLoggedIn("/auth/login"), (req, res, next) => {
     console.log(">>", user);
     res.render("user/show", { user: user }); // shows current user information / profile
     // console.log(req.user);
-    // })
-    // .catch(err => {
-    //   throw err;
   });
+  // .catch(err => {
+  //   res.render("error");
+  // });
 });
 
 router.get("/profile/edit", ensureLoggedIn("/auth/login"), (req, res, next) => {
@@ -32,7 +32,7 @@ router.post(
       firstName,
       lastName,
       email,
-      password,
+      //password,
       role,
       currentPosition,
       currentCompany,
@@ -48,9 +48,9 @@ router.post(
     console.log("LANGUAGESSSSSSS", typeof languages);
     console.log("Interestsssss", typeof interests);
 
-    if (typeof languages !== Array) {
-      languages = [languages];
-    }
+    // if (typeof languages !== Array) {
+    //   languages = [languages];
+    // }
 
     if (typeof interests !== Array) {
       interests = [interests];
@@ -69,7 +69,7 @@ router.post(
           firstName,
           lastName,
           email,
-          password,
+          //password,
           role,
           currentPosition,
           currentCompany,

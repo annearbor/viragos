@@ -13,7 +13,7 @@ const UserSchema = mongoose.Schema({
   // university: String,
   // gradYear: Number,
   languages: [String],
-  picture: String,
+  picture: { type: String, default: "/images/Avatar.png" },
   summary: String,
   headline: String,
   location: String,

@@ -17,26 +17,35 @@ const bcryptSalt = 10;
 router.get("/login", (req, res) => {
   console.log("login clicked");
   console.log(req.user);
+  //flash doesnt seem to work
   res.render("auth/login", { message: req.flash("error") });
 });
 
 //post route from login with authenticate
-router.post("/login", passport.authenticate("local"), (req, res) => {
-  console.log(req.user);
-  //{ user: req.user }
-  res.redirect("profile/show");
-  // res.redirect();
-});
+// router.post("/login", passport.authenticate("local"), (req, res) => {
+//   // console.log(req.user);
+//   // {
+//   //   user: req.user;
+//   // }
+//   res.redirect("profile/show");
+//   // res.redirect();
+// });
 
-// router.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     successRedirect: "profile/edit",
-//     failureRedirect: "auth/login",
-//     failureFlash: true,
-//     passReqToCallback: true
-//   })
-// );
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "profile/show",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true
+  })
+);
+
+// passport.use(new LocalStrategy({
+//   passReqToCallback: true
+// }, (req, username, password, next) => {
+//   User.findOne({ username }, (err, user) => {
+//     // ...
 
 //local signup
 router.get("/signup", (req, res) => {
@@ -66,7 +75,6 @@ router.post("/signup", (req, res) => {
       firstName,
       lastName,
       email,
-      //password
       password: hashPass
     })
       .then(user => {

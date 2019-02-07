@@ -1,12 +1,24 @@
+const passport = require("passport");
 const LinkedInStrategy = require("passport-linkedin-oauth2").Strategy;
 const LocalStrategy = require("passport-local").Strategy;
-const passport = require("passport");
-
 const LINKEDIN_API_KEY = process.env.LINKEDIN_API_KEY;
 const LINKEDIN_SECRET_KEY = process.env.LINKEDIN_SECRET_KEY;
 const bcrypt = require("bcrypt");
 
 const User = require("../models/user");
+
+//passport.session acts as a middleware to alter the req object and change the 'user' value that
+// is currently the session id (from the client cookie) into the true deserialized user object.
+//persistent login sessions
+
+passport.serializeUser(function(user, callback) {
+  callback(null, user);
+});
+passport.deserializeUser(function(user, callback) {
+  User.findById(user).then(u => {
+    callback(null, u);
+  });
+});
 
 passport.use(
   new LinkedInStrategy(
@@ -79,3 +91,5 @@ passport.use(
     }
   )
 );
+
+module.exports = passport;

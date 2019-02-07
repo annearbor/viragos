@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
 //shows profiles that the current user liked
-router.get("/profiles", (req, res, next) => {
+router.get("/profiles/likes", ensureLoggedIn(), (req, res, next) => {
   User.find()
     .then(results => {
       for (let i = 0; i < results.length; i++) {
@@ -16,7 +17,7 @@ router.get("/profiles", (req, res, next) => {
     });
 });
 
-// router.post("/profiles", (req, res, next) => {
+// router.post("/profiles/likes", (req, res, next) => {
 //   //id of the current user
 //   const id = req.param("id");
 //   // if already includes in the array of the other user then remove else add
@@ -46,12 +47,14 @@ router.get("/profiles", (req, res, next) => {
 // });
 
 // search and find users by location with their currentPosition
-router.post("/results", (req, res) => {
+
+router.post("/results", ensureLoggedIn(), (req, res) => {
   let location = req.body.location;
   let role = req.body.role;
   let languages = req.body.languages;
   console.log("this is the roleeeeeeeeeee", role);
   console.log("this is the languagesssssss", languages);
+  
   console.log(location);
   let query = {};
 
