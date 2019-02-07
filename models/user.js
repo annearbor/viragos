@@ -18,7 +18,8 @@ const UserSchema = mongoose.Schema({
   headline: String,
   location: String,
   interests: [String],
-  linkedinProfile: Object
+  linkedinProfile: Object,
+  likes: [mongoose.Schema.Types.ObjectId]
 });
 
 const User = mongoose.model("User", UserSchema);
