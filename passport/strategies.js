@@ -24,7 +24,6 @@ passport.use(
         User.findOne({ linkedinId: profile.id }).then(user => {
           console.log("user", user);
 
-          // can this be extracted to auth.js?
           if (user === null) {
             User.create({
               firstName: profile.name.givenName,
@@ -75,7 +74,7 @@ passport.use(
           return;
         }
 
-        next(null, foundUser);
+        next(null, user);
       });
     }
   )
