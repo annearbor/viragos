@@ -2,9 +2,10 @@
   <div class="col-md-3 col-xs-12"></div>
   <h2>Your profile information</h2>
   <h4>First name</h4>
-  <input name="firstName" placeholder="First name" type="text" class="form-control" value="{{user.firstName}}">
+  <input name="firstName" placeholder="First name" type="text" class="form-control" value="{{user.firstName}}" required>>
   <h4>Last name</h4>
-  <input name="lastName" placeholder="Last name" type="text" class="form-control" value="{{user.lastName}}">
+  <input name="lastName" placeholder="Last name" type="text" class="form-control" value="{{user.lastName}}"
+    required>
   <h4>Email</h4>
   <input name="email" placeholder="Email" type="text" class="form-control" value="{{user.email}}">
   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
@@ -19,7 +20,7 @@
   <h4>Location</h4>
   <input name="currentLocation" placeholder="Location" type="text" class="form-control" value="{{user.location}}">
   <h4>Current Position</h4>
-  <input name="currentPosition" type="text" class="form-control" value="{{user.currentPosition}}">
+  <input name="currentPosition" type="text" class="form-control" value="{{user.currentPosition}}" required>
 
 
   <h4>Company</h4>

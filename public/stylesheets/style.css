@@ -20,18 +20,33 @@ body {
   text-decoration: none;
 }
 
+.column {
+  float: left;
+  width: 50%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 h1 {
   color: #808080;
 }
 
 h4 {
-  margin-top: 12px;
   color: #808080;
+}
+
+.newsletter {
+  margin-left: 50px;
+  margin-top: 10px;
 }
 
 nav {
   position: sticky;
-  top: 0;
 }
 
 .content {
@@ -93,7 +108,7 @@ nav {
 footer {
   font-family: "Lato", sans-serif;
   color: #808080;
-  list-style-type: none;
+  float: right;
 }
 
 .womanComp {
@@ -141,11 +156,6 @@ nav {
 
 .sticky + .content {
   padding-top: 60px;
-}
-
-.dropdown {
-  position: relative;
-  display: inline-block;
 }
 
 .centered {
