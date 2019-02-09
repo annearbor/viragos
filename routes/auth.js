@@ -34,7 +34,7 @@ router.get("/login", (req, res) => {
 router.post(
   "/login",
   passport.authenticate("local", {
-    successRedirect: "profile/show",
+    successRedirect: "profile/:id/show",
     failureRedirect: "/login",
     failureFlash: true,
     passReqToCallback: true
@@ -94,8 +94,8 @@ router.get(
   function(req, res) {
     console.log("success");
     // Successful authentication, redirect to profile.
-
-    res.redirect("/profile/show");
+    let profileid = "/profile/" + req.user._id + "/show";
+    res.redirect(profileid);
   }
 );
 

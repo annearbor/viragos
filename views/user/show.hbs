@@ -1,9 +1,9 @@
 <div class="container">
-  {{#if user}}
-  {{user}}
-  <h2>Welcome {{user.firstName}}!</h2>
-  <p>Your role: {{user.role}}</p>
+  {{#if user.isOwner}}
+  <h2>Welcome {{user.firstName}}</h2>
   {{/if}}
+
+
 
   <div class="full-profile">
     <div class="profile-pic">
@@ -13,6 +13,7 @@
     </div>
     <div class="pub-name" <h4> {{user.firstName}} {{user.lastName}}</h4>
     </div>
+    <p>Role: {{user.role}}</p>
     {{#if user.currentPosition}}
     <div class="job">
       <p>{{user.currentPosition}} at {{user.currentCompany}}
@@ -46,9 +47,9 @@
       {{/if}}
     </div>
 
-    {{#if user}}
+    {{!-- {{#if user.isOwner}} --}}
     <div><button><a href="/profile/edit">Edit your profile!</a></button>
     </div>
-    {{/if}}
+    {{!-- {{/if}} --}}
   </div>
 </div>

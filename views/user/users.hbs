@@ -57,7 +57,6 @@
             <input type="checkbox" name="languages" value="German"> German</br>
             <input type="checkbox" name="languages" value="English"> English</br>
             <input type="checkbox" name="languages" value="French"> French</br>
-            <input type="checkbox" name="languages" value="Spanish"> Spanish</br>
             <input type="checkbox" name="languages" value="Italian"> Italian</br>
           </div>
         </div>
@@ -74,34 +73,32 @@
 {{!-- users.hbs (you should call this index.hbs) output is all users or result from the search--}}
 <h2 class="text-center mt-4">Discover your next mentor or mentee</h2>
 
+<div class="results">
+  <div class="container">
+    <div class="row">
 
-<div class="container">
-  <div class="row">
+      {{#each results}}
 
-    {{#each results}}
+      <div class="card col-sm-2 m-3" style="width: 18rem;">
+        <img src="{{this.picture}}" class=" card-img-top" altSrc="public/images/Avatar_512.png">
+        <div class="card-body">
 
-    <div class="card col-sm-4 m-2" style="width: 18rem;">
-      <img src="{{this.picture}}" class=" card-img-top" altSrc="public/images/Avatar_512.png">
+          <h5 class="card-title">{{this.firstName}}</h5>
+          <p class="card-text">{{this.interests}}</p>
+          <p class="card-text">{{this.role}}</p>
+          <p class="card-text">{{this.location}}</p>
+          <a href="profile/{{this._id}}/show" class=" btn btn-primary">Show Profile</a><br>
+          <form method="POST">
+            <input type="submit" value="{{#if this.liked}}Unlike{{else}}Like{{/if}}" class="btn btn-primary" />
+            <input name="id" type="hidden" value="{{this._id}}" />
+          </form>
 
-
-      <div class="card-body">
-
-        <h5 class="card-title">{{this.firstName}}</h5>
-        <p class="card-text">{{this.interests}}</p>
-        <p class="card-text">{{this.role}}</p>
-        <p class="card-text">{{this.location}}</p>
-        <a href="profile/{{this._id}}/show" class=" btn btn-primary">Show Profile</a><br>
-        <form method="POST">
-          <input type="submit" value="{{#if this.liked}}Unlike{{else}}Like{{/if}}" class="btn btn-primary" />
-          <input name="id" type="hidden" value="{{this._id}}" />
-        </form>
+        </div>
+        {{/each}}
 
       </div>
-      {{/each}}
-
     </div>
   </div>
-</div>
 </div>
 
 </div>

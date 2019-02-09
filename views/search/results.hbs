@@ -1,47 +1,23 @@
 <!doctype html>
 <html lang="en">
 
-
-
-
 <h2 class="text-center mt-4">Result(s) for your search...</h2>
 
-<div class="row">
-  <div class="col-sm-6"></div>
+<div class="results">
+  <div class="container">
+    <div class="row">
 
+      {{#each results}}
+      <div class="card col-sm-2 m-3" style="width: 18rem;">
+        <img src="{{this.picture}}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{this.firstName}}</h5>
+          <p class="card-text">{{this.interests}}</p>
+          <p class="card-text">{{this.role}}</p>
+          <p class="card-text">{{this.location}}</p>
+          <a href="{{user}}" class="btn btn-primary">Show Profile</a>
+        </div>
+      </div>
+      {{/each}}
 
-  {{#each results}}
-
-  <img src="{{this.picture}}" class="card-img-top" alt="Profile_Pic">
-  <div class="card-body">
-    <h5 class="card-title">{{this.firstName}}</h5>
-    <p class="card-text">{{user.currentPosition}}</p>
-    <p class="card-text">{{user.role}}</p>
-    <a href="{{user}}" class=" btn btn-primary"></a>
-    {{/each}}
-
-  </div>
-</div>
-</div>
-</div>
-
-
-
-
-
-
-
-
-{{!-- currentPosition: String,
-currentCompany: String,
-currentIndustry: String,
-role: { type: String, enum: ["Mentor", "Mentee"] },
-// university: String,
-// gradYear: Number,
-languages: [String],
-picture: String,
-summary: String,
-headline: String,
-location: String,
-interests: [String],
-linkedinProfile: Object --}}
+    </div>
