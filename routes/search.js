@@ -1,26 +1,60 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../models/user");
+const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
-router.get("/profiles", (req, res, next) => {
+//shows profiles that the current user liked
+router.get("/profiles", ensureLoggedIn(), (req, res, next) => {
   User.find()
     .then(results => {
+      for (let i = 0; i < results.length; i++) {
+        results[i].liked = req.user.likes.includes(results[i]._id);
+      }
       res.render("user/users", { results, user: req.user });
     })
     .catch(error => {
       console.log(error);
     });
-
-  console.log("REQ DOT USERSSSSSSS", req.user);
 });
 
+// router.post("/profiles/likes", (req, res, next) => {
+//   //id of the current user
+//   const id = req.param("id");
+//   // if already includes in the array of the other user then remove else add
+
+//   // const result = words.filter(word => word.length > 6);
+//   req.user.likes.
+
+//   const result = req.user.likes
+//    if (req.user.likes.includes(id)) {
+
+//    }
+
+//       req.user.likes.push(id)
+//   }
+//   req.user.update();
+//   // then
+//   User.find()
+//     .then(results => {
+//       for (let i = 0; i < results.length; i++) {
+//         results[i].liked = req.user.likes.includes(results[i]._id);
+//       }
+//       res.render("user/users", { results, user: req.user });
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// });
+
 // search and find users by location with their currentPosition
-router.post("/results", (req, res) => {
+
+router.post("/results", ensureLoggedIn(), (req, res) => {
   let location = req.body.location;
   let role = req.body.role;
   let languages = req.body.languages;
   console.log("this is the roleeeeeeeeeee", role);
   console.log("this is the languagesssssss", languages);
+  
   console.log(location);
   let query = {};
 

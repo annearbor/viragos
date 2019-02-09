@@ -10,19 +10,18 @@
   <div class="col-sm-6"></div>
 
 
-  <div class="card col-sm-2 m-3" style="width: 18rem;">
+  {{#each results}}
 
-    {{#each results}}
-    <img src="/images/IMG_0002.JPG" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{this.firstName}}</h5>
-      <p class="card-text">{{user.headline}}</p>
-      <p class="card-text">{{user.role}}</p>
-      <a href="{{user}}" class="btn btn-primary"></a>
-      {{/each}}
+  <img src="{{this.picture}}" class="card-img-top" alt="Profile_Pic">
+  <div class="card-body">
+    <h5 class="card-title">{{this.firstName}}</h5>
+    <p class="card-text">{{user.currentPosition}}</p>
+    <p class="card-text">{{user.role}}</p>
+    <a href="{{user}}" class=" btn btn-primary"></a>
+    {{/each}}
 
-    </div>
   </div>
+</div>
 </div>
 </div>
 

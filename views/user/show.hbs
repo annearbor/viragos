@@ -1,30 +1,54 @@
-<h1>Hello {{user.firstName}}!</h1>
+<div class="container">
+  {{#if user}}
+  {{user}}
+  <h2>Welcome {{user.firstName}}!</h2>
+  <p>Your role: {{user.role}}</p>
+  {{/if}}
 
+  <div class="full-profile">
+    <div class="profile-pic">
+      {{#if user.picture}}
+      <img src='{{user.picture}}' alt="profilepic" />
+      {{/if}}
+    </div>
+    <div class="pub-name" <h4> {{user.firstName}} {{user.lastName}}</h4>
+    </div>
+    {{#if user.currentPosition}}
+    <div class="job">
+      <p>{{user.currentPosition}} at {{user.currentCompany}}
+        {{/if}}
+        {{#if user.location}}
+        <p>in {{user.location}}</p>
+        {{/if}}
+      </p>
+    </div>
+    <div class="profile-aboutme">
+      <p>{{user.headline}}</p><br>
+      <p>{{user.summary}}</p>
+    </div>
+    {{#if user.languages}}
+    <div class="profile-add">
+      <p> I speak {{user.languages}}</p>
+    </div>
+    {{/if}}
 
-<h4> {{user.firstName}} {{user.lastName}}</h4>
+    {{#if user.interests}}
+    <div class="profile-add">
+      <p> {{user.interests}}</p>
+    </div>
+    {{/if}}
+    <div class="profile-add">
+      {{#if user.isMentor}}
+      <p>Current industry: {{user.currentIndustry}}</p>
+      </p>
+      {{/if}}
+      {{#if user.isMentee}}
+      {{/if}}
+    </div>
 
-<img src='{{user.picture}}' alt="profilepic" />
-
-<p>{{user.currentPosition}}
-</p>
-
-<p>{{user.headline}}</p>
-<p>{{user.summary}}</p>
-<p>{{user.location}}</p>
-<b>{{user.role}}</b>
-
-<p>{{user.interests}}</p>
-
-{{user.headline}}
-{{user.location}}
-{{user.role}}
-
-{{user.email}}
-{{user.currentCompany}}
-{{user.currentIndustry}}
-{{user.languages}}
-
-<div><button><a href="/profile/edit">Edit</a></button>
-
-</div>
+    {{#if user}}
+    <div><button><a href="/profile/edit">Edit your profile!</a></button>
+    </div>
+    {{/if}}
+  </div>
 </div>

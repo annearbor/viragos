@@ -10,33 +10,44 @@ const router = express.Router();
 const User = require("../models/user");
 const flash = require("connect-flash");
 
+// Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
-const bryptSalt = 10;
+const bcryptSalt = 10;
 
 router.get("/login", (req, res) => {
   console.log("login clicked");
   console.log(req.user);
+  //flash doesnt seem to work
   res.render("auth/login", { message: req.flash("error") });
 });
 
 //post route from login with authenticate
-router.post("/login", passport.authenticate("local"), (req, res) => {
-  console.log(req.user);
-  //{ user: req.user }
-  res.redirect("profile/edit");
-  // res.redirect();
-});
+// router.post("/login", passport.authenticate("local"), (req, res) => {
+//   // console.log(req.user);
+//   // {
+//   //   user: req.user;
+//   // }
+//   res.redirect("profile/show");
+//   // res.redirect();
+// });
 
-// router.post(
-//   "/login",
-//   passport.authenticate("local", {
-//     successRedirect: "profile/edit",
-//     failureRedirect: "auth/login",
-//     failureFlash: true,
-//     passReqToCallback: true
-//   })
-// );
+router.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "profile/show",
+    failureRedirect: "/login",
+    failureFlash: true,
+    passReqToCallback: true
+  })
+);
 
+// passport.use(new LocalStrategy({
+//   passReqToCallback: true
+// }, (req, username, password, next) => {
+//   User.findOne({ username }, (err, user) => {
+//     // ...
+
+//local signup
 router.get("/signup", (req, res) => {
   res.render("auth/signup");
 });
@@ -44,7 +55,7 @@ router.get("/signup", (req, res) => {
 router.post("/signup", (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
-  if (email === "" || password === "" || username === "") {
+  if (email === "" || password === "") {
     res.render("auth/signup", { message: "Indicate email and password" });
     return;
   }
@@ -64,7 +75,6 @@ router.post("/signup", (req, res) => {
       firstName,
       lastName,
       email,
-      //password
       password: hashPass
     })
       .then(user => {
@@ -75,6 +85,7 @@ router.post("/signup", (req, res) => {
   });
 });
 
+//linkedin authentication
 router.get("/auth/linkedin", passport.authenticate("linkedin"));
 
 router.get(
@@ -88,6 +99,7 @@ router.get(
   }
 );
 
+//logout
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");

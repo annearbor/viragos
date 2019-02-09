@@ -4,8 +4,7 @@
   <h4>First name</h4>
   <input name="firstName" placeholder="First name" type="text" class="form-control" value="{{user.firstName}}" required>>
   <h4>Last name</h4>
-  <input name="
-    lastName" placeholder="Last name" type="text" class="form-control" value="{{user.lastName}}"
+  <input name="lastName" placeholder="Last name" type="text" class="form-control" value="{{user.lastName}}"
     required>
   <h4>Email</h4>
   <input name="email" placeholder="Email" type="text" class="form-control" value="{{user.email}}">
@@ -14,8 +13,9 @@
   {{!-- <h4>Password</h4>
   <input name="password" placeholder="Password" type="password" class="form-control" value=""> --}}
   <h4>Mentor or Mentee?</h4>
-  <input type="radio" name="role" value="mentor"> Mentor<br>
-  <input type="radio" name="role" value="mentee"> Mentee<br>
+
+  <input type="radio" name="role" value="Mentor"> Mentor<br>
+  <input type="radio" name="role" value="Mentee"> Mentee<br>
 
   <h4>Location</h4>
   <input name="currentLocation" placeholder="Location" type="text" class="form-control" value="{{user.location}}">
@@ -40,6 +40,9 @@
     <option value="" data-icon="" class=""> --}}
 
       <div class="btn-group btn-group-toggle" name="" data-toggle="buttons">
+        <label class="btn btn-secondary">
+          <input type="checkbox" name="languages" value="english" autocomplete="off"> English
+        </label>
         <label class="btn btn-secondary">
           <input type="checkbox" name="languages" value="german" autocomplete="off"> German
         </label>
