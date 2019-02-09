@@ -4,7 +4,7 @@ const User = require("../models/user");
 const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
 //shows profiles that the current user liked
-router.get("/profiles/likes", ensureLoggedIn(), (req, res, next) => {
+router.get("/profiles", ensureLoggedIn(), (req, res, next) => {
   User.find()
     .then(results => {
       for (let i = 0; i < results.length; i++) {

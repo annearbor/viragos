@@ -3,20 +3,6 @@ const router = express.Router();
 const User = require("../models/user");
 const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 
-router.get("/profile/show", ensureLoggedIn("/auth/login"), (req, res, next) => {
-  User.findById(req.user).then(user => {
-    user.isMentor = user.role === "Mentor";
-    user.isMentee = user.role === "Mentee";
-    //req.user.languages = req.user.languages[0];
-    console.log(">>", user);
-    res.render("user/show", { user: user }); // shows current user information / profile
-    // console.log(req.user);
-  });
-  // .catch(err => {
-  //   res.render("error");
-  // });
-});
-
 router.get("/profile/edit", ensureLoggedIn("/auth/login"), (req, res, next) => {
   // console.log(req.user);
   console.log("this is a GET call");
@@ -87,6 +73,24 @@ router.post(
         res.redirect("/profile/show");
       })
       .catch(err => console.log(err));
+  }
+);
+
+router.get(
+  "/profile/:_id/show",
+  ensureLoggedIn("/auth/login"),
+  (req, res, next) => {
+    User.findById(req.user._id).then(user => {
+      user.isMentor = user.role === "Mentor";
+      user.isMentee = user.role === "Mentee";
+      //req.user.languages = req.user.languages[0];
+      console.log(">>", user);
+      res.render("user/show", { user: user._id }); // shows current user information / profile
+      // console.log(req.user);
+    });
+    // .catch(err => {
+    //   res.render("error");
+    // });
   }
 );
 

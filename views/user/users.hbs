@@ -86,14 +86,16 @@
   <div class="row">
 
     {{#each results}}
+
     <div class="card col-sm-4 m-2" style="width: 18rem;">
       <img src="{{this.picture}}" class=" card-img-top" altSrc="public/images/Avatar_512.png">
       <div class="card-body">
+
         <h5 class="card-title">{{this.firstName}}</h5>
         <p class="card-text">{{this.interests}}</p>
         <p class="card-text">{{this.role}}</p>
         <p class="card-text">{{this.location}}</p>
-        <a href="#" class="btn btn-primary">Show Profile</a><br>
+        <a href="profile/{{this._id}}/show" class=" btn btn-primary">Show Profile</a><br>
         <form method="POST">
           <input type="submit" value="{{#if this.liked}}Unlike{{else}}Like{{/if}}" class="btn btn-primary" />
           <input name="id" type="hidden" value="{{this._id}}" />
