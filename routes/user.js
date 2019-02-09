@@ -70,7 +70,7 @@ router.post(
     )
       .then(user => {
         // console.log("user", user);
-        res.redirect("/profile/show");
+        res.redirect("/profile/:id/show");
       })
       .catch(err => console.log(err));
   }
@@ -80,12 +80,16 @@ router.get(
   "/profile/:_id/show",
   ensureLoggedIn("/auth/login"),
   (req, res, next) => {
-    User.findById(req.user._id).then(user => {
+    User.findById(req.params._id).then(user => {
       user.isMentor = user.role === "Mentor";
       user.isMentee = user.role === "Mentee";
+
+      if (user._id === req.user._id) {
+        user.isOwner = true;
+      }
       //req.user.languages = req.user.languages[0];
       console.log(">>", user);
-      res.render("user/show", { user: user._id }); // shows current user information / profile
+      res.render("user/show", { user: user, currentUser: req.user }); // shows current user information / profile
       // console.log(req.user);
     });
     // .catch(err => {
