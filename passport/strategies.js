@@ -25,7 +25,7 @@ passport.use(
     {
       clientID: LINKEDIN_API_KEY,
       clientSecret: LINKEDIN_SECRET_KEY,
-      callbackURL: "http://127.0.0.1:3000/auth/linkedin/callback",
+      callbackURL: "/auth/linkedin/callback",
       state: true,
       scope: ["r_emailaddress", "r_basicprofile"]
     },
