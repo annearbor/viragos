@@ -60,6 +60,7 @@ router.post("/results", ensureLoggedIn(), (req, res) => {
 
   if (languages) query.languages = languages;
   if (role) query.role = role;
+
   if (location) query.location = location;
 
   //location = "/" + location + "/i";

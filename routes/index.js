@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
-const io = require("socket.io");
+//const io = require("socket.io");
 
 /* GET home page */
 router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-router.get("concept", (req, res, next) => {
-  res.render("/our-concept");
+router.get("/concept", (req, res, next) => {
+  res.render("concept");
 });
 
 router.get("about", (req, res, next) => {

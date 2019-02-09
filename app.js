@@ -9,7 +9,6 @@ const logger = require("morgan");
 const path = require("path");
 const passport = require("passport");
 const session = require("express-session");
-
 const MongoStore = require("connect-mongo")(session);
 
 require("./passport/strategies");
