@@ -14,7 +14,8 @@
 
 <body>
 
-  <nav class="navbar sticky-top navbar-expand-md navbar-light bg-light">
+
+  <nav class=" navbar-expand-md navbar-light bg-light">
     <a href="/"><img src="/images/viragos.png" alt="viragos-logo"></a>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav ml-auto">
@@ -26,9 +27,6 @@
         </li>
         <li class="nav-item">
           <a class="nav-link">About us</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="mailto:viragos@hotmail.fr">Contact</a>
         </li>
         {{#if user}}
         <li class="nav-item">
@@ -46,9 +44,68 @@
     </div>
   </nav>
 
-
-
   {{{body}}}
+
+
+  <div class="text-center">
+    <div class="newsletter">
+      <form class="form-inline">
+        <input type="email" class="form-control" size="50" placeholder="Email Address" required>
+        <div class="input-group-btn">
+          <button type="button" class="btn btn-secondary">Subscribe</button>
+        </div>
+    </div>
+    </form>
+  </div>
+
+  <footer>
+
+
+    <div class="row">
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Links -->
+        <h5 class="text-md-center">Useful info</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">How does it work</a>
+          </li>
+          <li>
+            <a href="mailto:viragos@hotmail.fr">Contact</a></a>
+          </li>
+          <li>
+            <a href="#!">Privacy</a>
+          </li>
+        </ul>
+
+      </div>
+      <!-- Grid column -->
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+
+        <!-- Links -->
+        <h5 class="text-md-center">About Viragos</h5>
+
+        <ul class="list-unstyled">
+          <li>
+            <a href="#!">General Terms of Use</a>
+          </li>
+          <li>
+            <a href="#!">Legal mentions</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Grid column -->
+      <div class="col-md-6 mt-md-0 mt-3">
+        <p>Copyright © Viragos 2019</p>
+      </div>
+
+    </div>
+    </div>
+  </footer>
 
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
