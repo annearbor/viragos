@@ -84,11 +84,15 @@ router.get(
       user.isMentor = user.role === "Mentor";
       user.isMentee = user.role === "Mentee";
 
-      if (user._id === req.user._id) {
+      if (user._id == req.user._id) {
         user.isOwner = true;
+        console.log("USER IS OWNER!", user.isOwner);
       }
+      console.log("USER_ID", user._id);
+      console.log("REQ.USER_ID", req.user._id);
+
       //req.user.languages = req.user.languages[0];
-      console.log(">>", user);
+      // console.log(">>", user);
       res.render("user/show", { user: user, currentUser: req.user }); // shows current user information / profile
       // console.log(req.user);
     });

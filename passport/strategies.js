@@ -25,7 +25,7 @@ passport.use(
     {
       clientID: LINKEDIN_API_KEY,
       clientSecret: LINKEDIN_SECRET_KEY,
-      callbackURL: "https://viragos.herokuapp.com/auth/linkedin/callback",
+      callbackURL: process.env.LINKEDIN_CALLBACK,
       state: true,
       scope: ["r_emailaddress", "r_basicprofile"]
     },

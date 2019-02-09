@@ -1,6 +1,8 @@
 <div class="container">
   {{#if user.isOwner}}
   <h2>Welcome {{user.firstName}}</h2>
+  <button><a href="/profile/edit">Edit your profile!</a></button>
+
   {{/if}}
 
 
@@ -48,8 +50,7 @@
     </div>
 
     {{!-- {{#if user.isOwner}} --}}
-    <div><button><a href="/profile/edit">Edit your profile!</a></button>
-    </div>
+
     {{!-- {{/if}} --}}
   </div>
 </div>
